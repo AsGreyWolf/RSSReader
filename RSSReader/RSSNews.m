@@ -1,32 +1,38 @@
 //
-//  News.m
+//  RSSNews.m
 //  RSSReader
 //
-//  Created by User on 11/11/16.
+//  Created by User on 11/21/16.
 //  Copyright © 2016 User. All rights reserved.
 //
 
-#import "News.h"
+#import "RSSNews.h"
 
-@interface News()
+@interface RSSNews()
+
 @property NSString* title;
 @property NSDate* date;
 @property NSString* text;
+
 @end
 
-@implementation News
+
+@implementation RSSNews
+
 -(id)initWithTitle:(NSString *) title
 			 withDate:(NSDate *) date
 			 withText:(NSString *) text{
-	News* result = [self init];
+	RSSNews* result = [self init];
 	result.title = title;
 	result.date = date;
 	result.text = text;
 	return result;
 }
+
 +(id)newsWithTitle:(NSString *) title
-	  withDate:(NSDate *) date
-	  withText:(NSString *) text{
-	return [[News alloc] initWithTitle:title withDate:date withText:text];
+		  withDate:(NSDate *) date
+		  withText:(NSString *) text{
+	return [[RSSNews alloc] initWithTitle:title withDate:date withText:text];
 }
+
 @end

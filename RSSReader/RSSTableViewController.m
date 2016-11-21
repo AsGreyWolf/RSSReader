@@ -7,12 +7,13 @@
 //
 
 #import "RSSTableViewController.h"
-#import "News.h"
-#import "NewsTableViewCell.h"
+#import "RSSNews.h"
+#import "RSSTableViewCell.h"
 
 @interface RSSTableViewController ()
 
 @end
+
 
 @implementation RSSTableViewController
 
@@ -23,8 +24,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	self.newsList = @[[News newsWithTitle:@"title 1" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text 1"],
-			 [News newsWithTitle:@"title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text2text2text2text2text2text2text2text2text2text2text2\nline\nline\nline\nline"]];
+	UINib *cellNib = [UINib nibWithNibName:@"RSSTableViewCell" bundle:nil];
+	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
+	self.newsList = @[[RSSNews newsWithTitle:@"title 1" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text 1"],
+			 [RSSNews newsWithTitle:@"title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text2text2text2text2text2text2text2text2text2text2text2\nline\nline\nline\nline"]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,13 +45,14 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	NewsTableViewCell *cell = (NewsTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-	News *item = [self.newsList objectAtIndex:indexPath.row];
+	RSSTableViewCell *cell = (RSSTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
+	RSSNews *item = [self.newsList objectAtIndex:indexPath.row];
 	cell.data = item;
 	return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-	return 90;
+	return 100;
 }
 
 @end

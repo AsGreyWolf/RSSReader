@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface RSSTableViewController : UITableViewController
+
 @property(nonatomic) NSArray* newsList;
+
 @end

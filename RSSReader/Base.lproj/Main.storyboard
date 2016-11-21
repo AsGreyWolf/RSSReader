@@ -4,9 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,50 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsCell" rowHeight="90" id="h32-br-fKK" customClass="NewsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewsCell" rowHeight="90" id="h32-br-fKK" customClass="RSSTableViewCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h32-br-fKK" id="I5u-72-2ts">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="STY-vP-X9J">
-                                            <rect key="frame" x="8" y="37" width="359" height="45"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" semanticContentAttribute="forceRightToLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ererstyeryrty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzh-Tc-MTb">
-                                            <rect key="frame" x="304.5" y="8" width="62.5" height="12"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-9l-a53">
-                                            <rect key="frame" x="8" y="8" width="289" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="STY-vP-X9J" firstAttribute="top" secondItem="k4e-9l-a53" secondAttribute="bottom" constant="8" id="5zg-ka-OE9"/>
-                                        <constraint firstItem="STY-vP-X9J" firstAttribute="trailing" secondItem="I5u-72-2ts" secondAttribute="trailingMargin" id="70E-c1-VTt"/>
-                                        <constraint firstItem="k4e-9l-a53" firstAttribute="leading" secondItem="I5u-72-2ts" secondAttribute="leadingMargin" id="NDx-9g-rxm"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="STY-vP-X9J" secondAttribute="bottom" id="NXA-B4-fbU"/>
-                                        <constraint firstItem="STY-vP-X9J" firstAttribute="leading" secondItem="I5u-72-2ts" secondAttribute="leadingMargin" id="OHC-XK-8eA"/>
-                                        <constraint firstItem="k4e-9l-a53" firstAttribute="top" secondItem="I5u-72-2ts" secondAttribute="topMargin" id="UUP-zh-4mB"/>
-                                        <constraint firstItem="dzh-Tc-MTb" firstAttribute="trailing" secondItem="I5u-72-2ts" secondAttribute="trailingMargin" id="aTZ-3K-wet"/>
-                                        <constraint firstItem="dzh-Tc-MTb" firstAttribute="leading" secondItem="k4e-9l-a53" secondAttribute="trailing" constant="7.5" id="b6U-ey-eRZ"/>
-                                        <constraint firstItem="dzh-Tc-MTb" firstAttribute="top" secondItem="I5u-72-2ts" secondAttribute="topMargin" id="tKF-5Q-LcF"/>
-                                    </constraints>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="date" destination="dzh-Tc-MTb" id="0bp-LZ-BUh"/>
-                                    <outlet property="text" destination="STY-vP-X9J" id="47Z-zQ-KMS"/>
-                                    <outlet property="title" destination="k4e-9l-a53" id="6hH-Hg-oiO"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
