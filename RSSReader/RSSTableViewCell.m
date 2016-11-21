@@ -23,7 +23,7 @@
 	_data = data;
 	self.title.text = data.title;
 	self.text.text = data.text;
-	self.date.text = [NSDateFormatter localizedStringFromDate:[NSDate date]
+	self.date.text = [NSDateFormatter localizedStringFromDate:data.date
 													dateStyle:NSDateFormatterShortStyle
 													timeStyle:NSDateFormatterShortStyle];
 	[self.date sizeToFit];

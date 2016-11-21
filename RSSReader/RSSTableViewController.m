@@ -9,6 +9,7 @@
 #import "RSSTableViewController.h"
 #import "RSSNews.h"
 #import "RSSTableViewCell.h"
+#include "RSSDetailViewController.h"
 
 @interface RSSTableViewController ()
 
@@ -51,8 +52,24 @@
 	return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 100;
 }
+
+int clicked;
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	clicked = indexPath.row;
+	[self performSegueWithIdentifier:@"RSSNewsDetailSegue" sender:tableView];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
+		RSSDetailViewController *controller = [segue destinationViewController];
+		controller.news = [self.newsList objectAtIndex:clicked];
+	}
+}
+
+- (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{}
 
 @end
