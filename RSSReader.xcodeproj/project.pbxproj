@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE97626F1DE300CE0086196D /* RSSNews.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97626E1DE300CE0086196D /* RSSNews.m */; };
-		CE9762761DE304480086196D /* RSSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9762741DE304480086196D /* RSSTableViewCell.m */; };
-		CE9762771DE304480086196D /* RSSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE9762751DE304480086196D /* RSSTableViewCell.xib */; };
+		CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9762791DE311220086196D /* RSSTableViewCell.m */; };
+		CE97627C1DE311220086196D /* RSSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97627A1DE311220086196D /* RSSTableViewCell.xib */; };
 		CEA8AF921DD5E4D900A3D649 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8AF911DD5E4D900A3D649 /* main.m */; };
 		CEA8AF951DD5E4D900A3D649 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8AF941DD5E4D900A3D649 /* AppDelegate.m */; };
 		CEA8AF9B1DD5E4D900A3D649 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA8AF991DD5E4D900A3D649 /* Main.storyboard */; };
@@ -21,9 +21,9 @@
 /* Begin PBXFileReference section */
 		CE97626D1DE300CE0086196D /* RSSNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNews.h; sourceTree = "<group>"; };
 		CE97626E1DE300CE0086196D /* RSSNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNews.m; sourceTree = "<group>"; };
-		CE9762731DE304480086196D /* RSSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSSTableViewCell.h; path = ../RSSTableViewCell.h; sourceTree = "<group>"; };
-		CE9762741DE304480086196D /* RSSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSSTableViewCell.m; path = ../RSSTableViewCell.m; sourceTree = "<group>"; };
-		CE9762751DE304480086196D /* RSSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RSSTableViewCell.xib; path = ../RSSTableViewCell.xib; sourceTree = "<group>"; };
+		CE9762781DE311220086196D /* RSSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSTableViewCell.h; sourceTree = "<group>"; };
+		CE9762791DE311220086196D /* RSSTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSTableViewCell.m; sourceTree = "<group>"; };
+		CE97627A1DE311220086196D /* RSSTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSTableViewCell.xib; sourceTree = "<group>"; };
 		CEA8AF8D1DD5E4D900A3D649 /* RSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA8AF911DD5E4D900A3D649 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEA8AF931DD5E4D900A3D649 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -66,15 +66,15 @@
 		CEA8AF8F1DD5E4D900A3D649 /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
+				CE9762781DE311220086196D /* RSSTableViewCell.h */,
+				CE9762791DE311220086196D /* RSSTableViewCell.m */,
+				CE97627A1DE311220086196D /* RSSTableViewCell.xib */,
 				CEA8AF931DD5E4D900A3D649 /* AppDelegate.h */,
 				CEA8AF941DD5E4D900A3D649 /* AppDelegate.m */,
 				CE97626D1DE300CE0086196D /* RSSNews.h */,
 				CE97626E1DE300CE0086196D /* RSSNews.m */,
 				CEA8AFA71DD5E6FF00A3D649 /* RSSTableViewController.h */,
 				CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */,
-				CE9762731DE304480086196D /* RSSTableViewCell.h */,
-				CE9762741DE304480086196D /* RSSTableViewCell.m */,
-				CE9762751DE304480086196D /* RSSTableViewCell.xib */,
 				CEA8AF991DD5E4D900A3D649 /* Main.storyboard */,
 				CEA8AF9C1DD5E4D900A3D649 /* Assets.xcassets */,
 				CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */,
@@ -150,7 +150,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9762771DE304480086196D /* RSSTableViewCell.xib in Resources */,
+				CE97627C1DE311220086196D /* RSSTableViewCell.xib in Resources */,
 				CEA8AFA01DD5E4D900A3D649 /* LaunchScreen.storyboard in Resources */,
 				CEA8AF9D1DD5E4D900A3D649 /* Assets.xcassets in Resources */,
 				CEA8AF9B1DD5E4D900A3D649 /* Main.storyboard in Resources */,
@@ -164,10 +164,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9762761DE304480086196D /* RSSTableViewCell.m in Sources */,
 				CEA8AF951DD5E4D900A3D649 /* AppDelegate.m in Sources */,
 				CEA8AF921DD5E4D900A3D649 /* main.m in Sources */,
 				CEA8AFA91DD5E6FF00A3D649 /* RSSTableViewController.m in Sources */,
+				CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */,
 				CE97626F1DE300CE0086196D /* RSSNews.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
