@@ -9,7 +9,8 @@
 #import "RSSTableViewController.h"
 #import "RSSNews.h"
 #import "RSSTableViewCell.h"
-#include "RSSDetailViewController.h"
+#import "RSSDetailViewController.h"
+#import "RSSParser.h"
 
 @interface RSSTableViewController ()
 
@@ -29,6 +30,10 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
 	self.newsList = @[[RSSNews newsWithTitle:@"title 1" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text 1"],
 			 [RSSNews newsWithTitle:@"title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text2text2text2text2text2text2text2text2text2text2text2\nline\nline\nline\nline"]];
+
+	rssLoader = [RSSLoader loaderWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
+	rssLoader.delegate = self;
+	[rssLoader startLoading];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,5 +76,13 @@ int clicked;
 }
 
 - (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{}
+
+- (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data{
+	RSSParser *parser = [RSSParser new];
+	self.newsList = [parser parse:data];
+}
+- (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err{
+	NSLog(@"%@", err);
+}
 
 @end

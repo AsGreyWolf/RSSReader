@@ -23,9 +23,12 @@
 	_data = data;
 	self.title.text = data.title;
 	self.text.text = data.text;
-	self.date.text = [NSDateFormatter localizedStringFromDate:data.date
+	if(self.date)
+		self.date.text = [NSDateFormatter localizedStringFromDate:data.date
 													dateStyle:NSDateFormatterShortStyle
 													timeStyle:NSDateFormatterShortStyle];
+	else
+		self.date.text = @"";
 	[self.date sizeToFit];
 	[self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
 }

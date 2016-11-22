@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSSLoader.h"
 
-@interface RSSTableViewController : UITableViewController
+@interface RSSTableViewController <RSSLoaderDelegate> : UITableViewController{
+	RSSLoader *rssLoader;
+}
 
 @property(nonatomic) NSArray* newsList;
 

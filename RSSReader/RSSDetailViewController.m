@@ -16,10 +16,17 @@
 
 - (void)setNews:(RSSNews *)news {
 	_news = news;
-	NSMutableString *text = [NSMutableString stringWithFormat:@"<h1>%@</h1><em>%@</em><p>%@</p>", news.title,
-							 [NSDateFormatter localizedStringFromDate:news.date
-															dateStyle:NSDateFormatterShortStyle
-															timeStyle:NSDateFormatterShortStyle],
+	NSString *date;
+	if(news.date){
+		date = [NSDateFormatter localizedStringFromDate:news.date
+									   dateStyle:NSDateFormatterShortStyle
+									   timeStyle:NSDateFormatterShortStyle];
+	}else{
+		date = @"";
+	}
+	NSMutableString *text = [NSMutableString stringWithFormat:@"<h1>%@</h1><em>%@</em><p>%@</p>",
+							 news.title,
+							 date,
 							 news.text];
 	self.text.attributedText = [[NSAttributedString alloc]
 						initWithData: [text dataUsingEncoding:NSUnicodeStringEncoding]

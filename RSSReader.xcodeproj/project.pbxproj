@@ -17,6 +17,8 @@
 		CEA8AF9D1DD5E4D900A3D649 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA8AF9C1DD5E4D900A3D649 /* Assets.xcassets */; };
 		CEA8AFA01DD5E4D900A3D649 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */; };
 		CEA8AFA91DD5E6FF00A3D649 /* RSSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */; };
+		CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF8EDCC1DE4784600D8ED39 /* RSSLoader.m */; };
+		CEF8EDD01DE4802500D8ED39 /* RSSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		CEA8AFA11DD5E4D900A3D649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEA8AFA71DD5E6FF00A3D649 /* RSSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSTableViewController.h; sourceTree = "<group>"; };
 		CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSTableViewController.m; sourceTree = "<group>"; };
+		CEF8EDCB1DE4784600D8ED39 /* RSSLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSLoader.h; sourceTree = "<group>"; };
+		CEF8EDCC1DE4784600D8ED39 /* RSSLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSLoader.m; sourceTree = "<group>"; };
+		CEF8EDCE1DE4802500D8ED39 /* RSSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSParser.h; sourceTree = "<group>"; };
+		CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,10 @@
 				CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */,
 				CEA8AFA11DD5E4D900A3D649 /* Info.plist */,
 				CEA8AF901DD5E4D900A3D649 /* Supporting Files */,
+				CEF8EDCB1DE4784600D8ED39 /* RSSLoader.h */,
+				CEF8EDCC1DE4784600D8ED39 /* RSSLoader.m */,
+				CEF8EDCE1DE4802500D8ED39 /* RSSParser.h */,
+				CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -172,9 +182,11 @@
 				CEA8AF951DD5E4D900A3D649 /* AppDelegate.m in Sources */,
 				CEA8AF921DD5E4D900A3D649 /* main.m in Sources */,
 				CEA8AFA91DD5E6FF00A3D649 /* RSSTableViewController.m in Sources */,
+				CEF8EDD01DE4802500D8ED39 /* RSSParser.m in Sources */,
 				CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */,
 				CE9762851DE31F490086196D /* RSSDetailViewController.m in Sources */,
 				CE97626F1DE300CE0086196D /* RSSNews.m in Sources */,
+				CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
