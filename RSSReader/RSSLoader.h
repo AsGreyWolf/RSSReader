@@ -7,11 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@protocol RSSLoaderDelegate <NSObject>
-- (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data;
-- (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err;
-@end
+#import "RSSLoaderDelegate.h"
 
 @interface RSSLoader : NSObject
 

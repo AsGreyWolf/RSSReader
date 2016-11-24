@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSLoaderDelegate.h; sourceTree = "<group>"; };
 		CE97626D1DE300CE0086196D /* RSSNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNews.h; sourceTree = "<group>"; };
 		CE97626E1DE300CE0086196D /* RSSNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNews.m; sourceTree = "<group>"; };
 		CE9762781DE311220086196D /* RSSTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSTableViewCell.h; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 				CEA8AF901DD5E4D900A3D649 /* Supporting Files */,
 				CEF8EDCB1DE4784600D8ED39 /* RSSLoader.h */,
 				CEF8EDCC1DE4784600D8ED39 /* RSSLoader.m */,
+				CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */,
 				CEF8EDCE1DE4802500D8ED39 /* RSSParser.h */,
 				CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */,
 			);
