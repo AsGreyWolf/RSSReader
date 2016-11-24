@@ -28,8 +28,7 @@
 	[super viewDidLoad];
 	UINib *cellNib = [UINib nibWithNibName:@"RSSTableViewCell" bundle:nil];
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
-	self.newsList = @[[RSSNews newsWithTitle:@"title 1" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text 1"],
-			 [RSSNews newsWithTitle:@"title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2title 2" withDate:[NSDate dateWithTimeIntervalSinceNow:0] withText:@"text2text2text2text2text2text2text2text2text2text2text2\nline\nline\nline\nline"]];
+	self.newsList = @[];
 
 	rssLoader = [RSSLoader loaderWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
 	rssLoader.delegate = self;

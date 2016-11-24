@@ -10,19 +10,19 @@
 
 @interface RSSParser ()
 
-@property(readonly) NSArray* dateFormats;
+@property(readonly) NSArray* _Nonnull dateFormats;
 
 @end
 
 
 @implementation RSSParser
 
-- (NSArray *) dateFormats{
+- (NSArray * _Nonnull) dateFormats{
 	return @[@"EEE, dd MMM yyyy HH:mm:ss ZZ", @"dd MMM yyyy HH:mm:ss ZZ"];
 }
 
-- (NSArray*)parse:(NSData*)data{
-	_newsList = [NSMutableArray new];
+- (NSArray* _Nullable)parse:(NSData* _Nonnull)data{
+	_newsList = [NSMutableArray  new];
 	_stack = [NSMutableArray new];
 	_dateFormatter = [[NSDateFormatter alloc] init];
 	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data];
@@ -37,6 +37,7 @@
 		title = @"";
 		description = @"";
 		date = nil;
+		url = nil;
 	}
 }
 
@@ -45,7 +46,7 @@
 	NSMutableString* str = [_stack objectAtIndex:top];
 	[_stack removeLastObject];
 	if ([elementName isEqualToString:@"item"]) {
-		[_newsList addObject:[RSSNews newsWithTitle:title withDate:date withText:description]];
+		[_newsList addObject:[RSSNews newsWithTitle:title withDate:date withText:description withURL:url]];
 	} else if ([elementName isEqualToString:@"title"]) {
 		title = str;
 	} else if ([elementName isEqualToString:@"description"]) {
@@ -57,6 +58,8 @@
 			date = [_dateFormatter dateFromString:str];
 			if(date) break;
 		}
+	} else if ([elementName isEqualToString:@"link"]) {
+		url = [NSURL URLWithString:str];
 	}
 }
 

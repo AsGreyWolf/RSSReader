@@ -12,6 +12,7 @@
 @interface RSSDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextView *text;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *linkButton;
 
 @property(nonatomic) RSSNews* news;
 

@@ -10,16 +10,19 @@
 
 @interface RSSNews : NSObject
 
-@property(readonly) NSString* title;
-@property(readonly) NSDate* date;
-@property(readonly) NSString* text;
+@property(readonly) NSString* _Nonnull title;
+@property(readonly) NSDate* _Nullable date;
+@property(readonly) NSString* _Nonnull text;
+@property(readonly) NSURL* _Nullable url;
 
--(id)initWithTitle:(NSString *) title
-			 withDate:(NSDate *) date
-			 withText:(NSString *)text;
+-(id _Nonnull)initWithTitle:(NSString * _Nonnull) title
+			 withDate:(NSDate * _Nullable) date
+			 withText:(NSString * _Nonnull)text
+			 withURL:(NSURL * _Nullable)url;
 
-+(id)newsWithTitle:(NSString *) title
-		  withDate:(NSDate *) date
-		  withText:(NSString *) text;
++(id _Nonnull)newsWithTitle:(NSString * _Nonnull) title
+		  withDate:(NSDate * _Nullable) date
+		  withText:(NSString * _Nonnull) text
+		  withURL:(NSURL * _Nullable) url;
 
 @end

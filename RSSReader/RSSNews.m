@@ -10,29 +10,33 @@
 
 @interface RSSNews()
 
-@property NSString* title;
-@property NSDate* date;
-@property NSString* text;
+@property NSString* _Nonnull title;
+@property NSDate* _Nullable date;
+@property NSString* _Nonnull text;
+@property NSURL* _Nullable url;
 
 @end
 
 
 @implementation RSSNews
 
--(id)initWithTitle:(NSString *) title
-			 withDate:(NSDate *) date
-			 withText:(NSString *) text{
+-(id _Nonnull)initWithTitle:(NSString * _Nonnull) title
+			 withDate:(NSDate * _Nullable) date
+			 withText:(NSString * _Nonnull) text
+			 withURL:(NSURL * _Nullable) url{
 	RSSNews* result = [self init];
 	result.title = title;
 	result.date = date;
 	result.text = text;
+	result.url = url;
 	return result;
 }
 
-+(id)newsWithTitle:(NSString *) title
-		  withDate:(NSDate *) date
-		  withText:(NSString *) text{
-	return [[RSSNews alloc] initWithTitle:title withDate:date withText:text];
++(id _Nonnull)newsWithTitle:(NSString * _Nonnull) title
+		  withDate:(NSDate * _Nullable) date
+		  withText:(NSString * _Nonnull) text
+		  withURL:(NSURL * _Nullable) url{
+	return [[RSSNews alloc] initWithTitle:title withDate:date withText:text withURL:url];
 }
 
 @end

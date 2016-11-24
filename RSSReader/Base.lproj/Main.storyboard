@@ -75,8 +75,14 @@
                                 <segue destination="7yt-Nl-old" kind="unwind" unwindAction="unwindFromDetail:" id="XAQ-mc-lOI"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="LdX-JY-9u7">
+                            <connections>
+                                <action selector="linkButtonTapped:" destination="gTz-Jy-yLE" id="X8H-Q7-pc5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="linkButton" destination="LdX-JY-9u7" id="sue-Fi-zqX"/>
                         <outlet property="text" destination="q8N-HC-Lpj" id="2G2-lN-7LK"/>
                     </connections>
                 </viewController>

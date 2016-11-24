@@ -35,11 +35,18 @@
 						error: nil
 					  ];
 	self.title = news.title;
+	if(!news.url){
+		self.linkButton.enabled = false;
+	}
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.news = self.news;
+}
+
+- (IBAction)linkButtonTapped:(id)sender {
+	[[UIApplication sharedApplication] openURL:self.news.url];
 }
 
 - (void)didReceiveMemoryWarning {
