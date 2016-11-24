@@ -49,8 +49,4 @@
 	[[UIApplication sharedApplication] openURL:self.news.url];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 @end

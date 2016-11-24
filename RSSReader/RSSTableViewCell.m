@@ -39,8 +39,4 @@
 	self.text.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	//[super setSelected:selected animated:animated];
-}
-
 @end
