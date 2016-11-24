@@ -13,7 +13,9 @@
 #import "RSSParser.h"
 
 @interface RSSTableViewController (){
+	UIActivityIndicatorView *_spinner;
 	RSSLoader *_rssLoader;
+	RSSParser *_rssParser;
 	int _clickedItem;
 }
 
@@ -33,10 +35,29 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
 	self.newsList = @[];
 
+	_spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	_spinner.center = CGPointMake(160, 240);
+	[self.view addSubview:_spinner];
+	_clickedItem = -1;
+	_rssParser = [RSSParser new];
 	_rssLoader = [RSSLoader loaderWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
 	_rssLoader.delegate = self;
 	[_rssLoader startLoading];
 }
+
+- (IBAction)refreshButtonTapped:(id)sender {
+	[_rssLoader startLoading];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
+		RSSDetailViewController *controller = [segue destinationViewController];
+		controller.news = [self.newsList objectAtIndex:_clickedItem];
+		_clickedItem = -1;
+	}
+}
+
+- (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{}
 
 #pragma mark - Table view data source
 
@@ -64,20 +85,18 @@
 	[self performSegueWithIdentifier:@"RSSNewsDetailSegue" sender:tableView];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
-		RSSDetailViewController *controller = [segue destinationViewController];
-		controller.news = [self.newsList objectAtIndex:_clickedItem];
-		_clickedItem = -1;
-	}
-}
+#pragma mark - RSSLoaderDelegate
 
-- (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{}
+- (void)RSSLoader:(id)RSSLoader didStartLoading:(NSURL *)url{
+	[_spinner startAnimating];
+}
 
 - (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data{
-	RSSParser *parser = [RSSParser new];
-	self.newsList = [parser parse:data];
+	NSArray *parsed =  [_rssParser parse:data];
+	[_spinner removeFromSuperview];
+	self.newsList = parsed;
 }
+
 - (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err{
 	NSLog(@"%@", err);
 }

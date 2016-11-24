@@ -35,7 +35,13 @@
                             <outlet property="delegate" destination="adm-SE-XC1" id="R7C-la-iur"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RSSReader" id="Lab-NP-xeP"/>
+                    <navigationItem key="navigationItem" title="RSSReader" id="Lab-NP-xeP">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ssr-B8-Lzf">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="adm-SE-XC1" id="ggQ-Pu-blD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsN-Zo-OYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

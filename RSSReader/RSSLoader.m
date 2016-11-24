@@ -19,16 +19,19 @@
 @implementation RSSLoader
 
 - (void)startLoading{
+	[self.delegate RSSLoader:self didStartLoading:_url];
 	_task = [[NSURLSession sharedSession] dataTaskWithURL:_url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-		if (data) {
-			if(self.delegate){
-				[self.delegate RSSLoader:self didFinishLoading:data];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			if (data) {
+				if(self.delegate){
+					[self.delegate RSSLoader:self didFinishLoading:data];
+				}
+			}else{
+				if(self.delegate){
+					[self.delegate RSSLoader:self didFailWithError:error];
+				}
 			}
-		}else{
-			if(self.delegate){
-				[self.delegate RSSLoader:self didFailWithError:error];
-			}
-		}
+		});
 	}];
 	[_task resume];
 }

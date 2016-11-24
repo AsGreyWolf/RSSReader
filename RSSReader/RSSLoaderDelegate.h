@@ -10,6 +10,7 @@
 
 @protocol RSSLoaderDelegate <NSObject>
 
+- (void)RSSLoader:(id)RSSLoader didStartLoading:(NSURL *)url;
 - (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data;
 - (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err;
 
