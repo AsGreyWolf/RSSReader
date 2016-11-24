@@ -35,7 +35,6 @@
 						error: nil
 					  ];
 	self.title = news.title;
-	self.titleBar.title = news.title;
 }
 
 - (void)viewDidLoad {

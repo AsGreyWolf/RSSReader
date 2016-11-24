@@ -22,11 +22,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h32-br-fKK" id="I5u-72-2ts">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="gTz-Jy-yLE" kind="showDetail" identifier="RSSNewsDetailSegue" id="ZnN-ft-M1b"/>
+                                    <segue destination="gTz-Jy-yLE" kind="show" identifier="RSSNewsDetailSegue" id="yTg-HZ-QQc"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -53,20 +53,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83R-cP-9Bk">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Title" id="4qq-KB-4cG">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="H3o-BB-TZ8">
-                                            <connections>
-                                                <segue destination="7yt-Nl-old" kind="unwind" unwindAction="unwindFromDetail:" id="XAQ-mc-lOI"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" restorationIdentifier="text" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="q8N-HC-Lpj">
-                                <rect key="frame" x="16" y="72" width="343" height="587"/>
+                                <rect key="frame" x="16" y="64" width="343" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -75,21 +63,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="83R-cP-9Bk" firstAttribute="top" secondItem="zMC-IM-m0H" secondAttribute="bottom" id="GPH-RD-87m"/>
-                            <constraint firstItem="q8N-HC-Lpj" firstAttribute="leading" secondItem="f9n-Su-B39" secondAttribute="leadingMargin" id="VP8-eh-DCw"/>
-                            <constraint firstItem="83R-cP-9Bk" firstAttribute="leading" secondItem="f9n-Su-B39" secondAttribute="leading" id="afl-fX-GTe"/>
-                            <constraint firstItem="glD-SK-oxP" firstAttribute="top" secondItem="q8N-HC-Lpj" secondAttribute="bottom" constant="8" id="cYE-cq-2bN"/>
-                            <constraint firstItem="q8N-HC-Lpj" firstAttribute="top" secondItem="83R-cP-9Bk" secondAttribute="bottom" constant="8" id="nOI-vA-QMQ"/>
-                            <constraint firstAttribute="trailing" secondItem="83R-cP-9Bk" secondAttribute="trailing" id="oqD-8p-JNt"/>
-                            <constraint firstItem="q8N-HC-Lpj" firstAttribute="trailing" secondItem="f9n-Su-B39" secondAttribute="trailingMargin" id="yib-Dg-PZC"/>
+                            <constraint firstItem="q8N-HC-Lpj" firstAttribute="leading" secondItem="f9n-Su-B39" secondAttribute="leadingMargin" id="5d6-bW-VvC"/>
+                            <constraint firstItem="glD-SK-oxP" firstAttribute="top" secondItem="q8N-HC-Lpj" secondAttribute="bottom" id="7vo-bT-bom"/>
+                            <constraint firstItem="q8N-HC-Lpj" firstAttribute="trailing" secondItem="f9n-Su-B39" secondAttribute="trailingMargin" id="O0N-SI-XQx"/>
+                            <constraint firstItem="q8N-HC-Lpj" firstAttribute="top" secondItem="zMC-IM-m0H" secondAttribute="bottom" id="d1k-eM-zh2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="xHI-w2-Zea">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="786-Oi-2nb"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="H3o-BB-TZ8">
+                            <connections>
+                                <segue destination="7yt-Nl-old" kind="unwind" unwindAction="unwindFromDetail:" id="XAQ-mc-lOI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="text" destination="q8N-HC-Lpj" id="2G2-lN-7LK"/>
-                        <outlet property="titleBar" destination="4qq-KB-4cG" id="cxh-PU-9ef"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0s-Ks-Zdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
