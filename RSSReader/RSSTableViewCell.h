@@ -11,6 +11,6 @@
 
 @interface RSSTableViewCell : UITableViewCell
 
-@property(nonatomic) RSSNews* data;
+@property(strong,nonatomic) RSSNews* data;
 
 @end

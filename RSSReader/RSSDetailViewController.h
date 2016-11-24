@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *text;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *linkButton;
 
-@property(nonatomic) RSSNews* news;
+@property(strong, nonatomic) RSSNews* news;
 
 @end

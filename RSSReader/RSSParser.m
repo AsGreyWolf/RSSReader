@@ -10,7 +10,7 @@
 
 @interface RSSParser ()
 
-@property(readonly) NSArray* _Nonnull dateFormats;
+@property(readonly,nonatomic) NSArray* _Nonnull dateFormats;
 
 @end
 

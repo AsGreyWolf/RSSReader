@@ -13,6 +13,6 @@
 	RSSLoader *rssLoader;
 }
 
-@property(nonatomic) NSArray* newsList;
+@property(strong, nonatomic) NSArray* newsList;
 
 @end

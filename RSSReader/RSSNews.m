@@ -10,10 +10,10 @@
 
 @interface RSSNews()
 
-@property NSString* _Nonnull title;
-@property NSDate* _Nullable date;
-@property NSString* _Nonnull text;
-@property NSURL* _Nullable url;
+@property(strong, atomic) NSString* _Nonnull title;
+@property(strong, atomic) NSDate* _Nullable date;
+@property(strong, atomic) NSString* _Nonnull text;
+@property(strong, atomic) NSURL* _Nullable url;
 
 @end
 
