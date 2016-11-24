@@ -14,6 +14,7 @@
 
 @interface RSSTableViewController (){
 	RSSLoader *_rssLoader;
+	int _clickedItem;
 }
 
 @end
@@ -58,17 +59,16 @@
 	return 100;
 }
 
-int clicked;
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	clicked = indexPath.row;
+	_clickedItem = indexPath.row;
 	[self performSegueWithIdentifier:@"RSSNewsDetailSegue" sender:tableView];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
 		RSSDetailViewController *controller = [segue destinationViewController];
-		controller.news = [self.newsList objectAtIndex:clicked];
+		controller.news = [self.newsList objectAtIndex:_clickedItem];
+		_clickedItem = -1;
 	}
 }
 
