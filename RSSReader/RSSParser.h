@@ -16,7 +16,6 @@
 	NSString *description;
 	NSDate *date;
 	NSDateFormatter *_dateFormatter;
-	NSDateFormatter *_dateFormatter2;
 }
 
 - (NSArray*)parse:(NSData*)data;

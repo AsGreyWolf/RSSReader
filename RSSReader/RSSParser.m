@@ -8,16 +8,23 @@
 
 #import "RSSParser.h"
 
+@interface RSSParser ()
+
+@property(readonly) NSArray* dateFormats;
+
+@end
+
 
 @implementation RSSParser
+
+- (NSArray *) dateFormats{
+	return @[@"EEE, dd MMM yyyy HH:mm:ss ZZ", @"dd MMM yyyy HH:mm:ss ZZ"];
+}
 
 - (NSArray*)parse:(NSData*)data{
 	_newsList = [NSMutableArray new];
 	_stack = [NSMutableArray new];
 	_dateFormatter = [[NSDateFormatter alloc] init];
-	[_dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss ZZ"];
-	_dateFormatter2 = [[NSDateFormatter alloc] init];
-	[_dateFormatter2 setDateFormat:@"dd MMM yyyy HH:mm:ss ZZ"];
 	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data];
 	parser.delegate = self;
 	[parser parse];
@@ -44,9 +51,11 @@
 	} else if ([elementName isEqualToString:@"description"]) {
 		description = str;
 	} else if ([elementName isEqualToString:@"pubDate"]) {
-		date = [_dateFormatter dateFromString:str];
-		if(!date){
-			date = [_dateFormatter2 dateFromString:str];
+		NSArray *formats = self.dateFormats;
+		for(int i=0; i<formats.count;i++){
+			_dateFormatter.dateFormat = [formats objectAtIndex:i];
+			date = [_dateFormatter dateFromString:str];
+			if(date) break;
 		}
 	}
 }
