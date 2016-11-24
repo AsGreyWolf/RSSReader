@@ -10,7 +10,11 @@
 
 @interface RSSDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *text;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *linkButton;
+
 @end
+
 
 @implementation RSSDetailViewController
 

@@ -8,7 +8,15 @@
 
 #import "RSSParser.h"
 
-@interface RSSParser ()
+@interface RSSParser (){
+	NSString * _Nonnull _title;
+	NSString * _Nonnull _description;
+	NSDate * _Nullable _date;
+	NSURL * _Nullable _url;
+	NSMutableArray * _Nullable _newsList;
+	NSMutableArray * _Nonnull _stack;
+	NSDateFormatter * _Nonnull _dateFormatter;
+}
 
 @property(readonly,nonatomic) NSArray* _Nonnull dateFormats;
 
@@ -34,10 +42,10 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
 	[_stack addObject:[NSMutableString new]];
 	if ([elementName isEqualToString:@"item"]) {
-		title = @"";
-		description = @"";
-		date = nil;
-		url = nil;
+		_title = @"";
+		_description = @"";
+		_date = nil;
+		_url = nil;
 	}
 }
 
@@ -46,20 +54,20 @@
 	NSMutableString* str = [_stack objectAtIndex:top];
 	[_stack removeLastObject];
 	if ([elementName isEqualToString:@"item"]) {
-		[_newsList addObject:[RSSNews newsWithTitle:title withDate:date withText:description withURL:url]];
+		[_newsList addObject:[RSSNews newsWithTitle:_title withDate:_date withText:_description withURL:_url]];
 	} else if ([elementName isEqualToString:@"title"]) {
-		title = str;
+		_title = str;
 	} else if ([elementName isEqualToString:@"description"]) {
-		description = str;
+		_description = str;
 	} else if ([elementName isEqualToString:@"pubDate"]) {
 		NSArray *formats = self.dateFormats;
 		for(int i=0; i<formats.count;i++){
 			_dateFormatter.dateFormat = [formats objectAtIndex:i];
-			date = [_dateFormatter dateFromString:str];
-			if(date) break;
+			_date = [_dateFormatter dateFromString:str];
+			if(_date) break;
 		}
 	} else if ([elementName isEqualToString:@"link"]) {
-		url = [NSURL URLWithString:str];
+		_url = [NSURL URLWithString:str];
 	}
 }
 

@@ -13,10 +13,7 @@
 - (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err;
 @end
 
-@interface RSSLoader : NSObject{
-	NSURL* _url;
-	NSURLSessionTask *_task;
-}
+@interface RSSLoader : NSObject
 
 @property (nonatomic, weak) id <RSSLoaderDelegate> delegate;
 

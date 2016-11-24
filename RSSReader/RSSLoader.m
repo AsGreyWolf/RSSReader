@@ -8,6 +8,14 @@
 
 #import "RSSLoader.h"
 
+@interface RSSLoader (){
+	NSURL* _url;
+	NSURLSessionTask *_task;
+}
+
+@end
+
+
 @implementation RSSLoader
 
 - (void)startLoading{

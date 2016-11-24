@@ -9,15 +9,7 @@
 #import <Foundation/Foundation.h>
 #include "RSSNews.h"
 
-@interface RSSParser <NSXMLParserDelegate> : NSObject{
-	NSMutableArray * _Nullable _newsList;
-	NSMutableArray * _Nonnull _stack;
-	NSString * _Nonnull title;
-	NSString * _Nonnull description;
-	NSDate * _Nullable date;
-	NSURL * _Nullable url;
-	NSDateFormatter * _Nonnull _dateFormatter;
-}
+@interface RSSParser <NSXMLParserDelegate> : NSObject
 
 - (NSArray* _Nullable)parse:(NSData* _Nonnull)data;
 

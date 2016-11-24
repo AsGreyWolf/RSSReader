@@ -12,7 +12,9 @@
 #import "RSSDetailViewController.h"
 #import "RSSParser.h"
 
-@interface RSSTableViewController ()
+@interface RSSTableViewController (){
+	RSSLoader *_rssLoader;
+}
 
 @end
 
@@ -30,9 +32,9 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
 	self.newsList = @[];
 
-	rssLoader = [RSSLoader loaderWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
-	rssLoader.delegate = self;
-	[rssLoader startLoading];
+	_rssLoader = [RSSLoader loaderWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
+	_rssLoader.delegate = self;
+	[_rssLoader startLoading];
 }
 
 #pragma mark - Table view data source
