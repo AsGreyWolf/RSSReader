@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #include "RSSNews.h"
 
-@interface RSSParser <NSXMLParserDelegate> : NSObject
+@interface RSSParser : NSObject<NSXMLParserDelegate>
 
 - (NSArray* _Nullable)parse:(NSData* _Nonnull)data;
 
