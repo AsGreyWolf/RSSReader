@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE366E1F1DEC53340080B9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E1E1DEC53340080B9CA /* main.m */; };
+		CE366E251DEC53A70080B9CA /* NibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E241DEC53A70080B9CA /* NibLoader.m */; };
+		CE366E2A1DEC63B50080B9CA /* RSSSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E291DEC63B50080B9CA /* RSSSource.m */; };
 		CE97626F1DE300CE0086196D /* RSSNews.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97626E1DE300CE0086196D /* RSSNews.m */; };
 		CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9762791DE311220086196D /* RSSTableViewCell.m */; };
 		CE97627C1DE311220086196D /* RSSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97627A1DE311220086196D /* RSSTableViewCell.xib */; };
@@ -22,6 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE366E1E1DEC53340080B9CA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TestTasks/main.m; sourceTree = SOURCE_ROOT; };
+		CE366E231DEC53A70080B9CA /* NibLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NibLoader.h; path = TestTasks/NibLoader.h; sourceTree = "<group>"; };
+		CE366E241DEC53A70080B9CA /* NibLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NibLoader.m; path = TestTasks/NibLoader.m; sourceTree = "<group>"; };
+		CE366E281DEC63B50080B9CA /* RSSSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSSource.h; sourceTree = "<group>"; };
+		CE366E291DEC63B50080B9CA /* RSSSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSSource.m; sourceTree = "<group>"; };
+		CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSSourceDelegate.h; sourceTree = "<group>"; };
 		CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSLoaderDelegate.h; sourceTree = "<group>"; };
 		CE97626D1DE300CE0086196D /* RSSNews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSNews.h; sourceTree = "<group>"; };
 		CE97626E1DE300CE0086196D /* RSSNews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSNews.m; sourceTree = "<group>"; };
@@ -57,9 +66,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE366E201DEC534E0080B9CA /* TestTasks */ = {
+			isa = PBXGroup;
+			children = (
+				CE366E1E1DEC53340080B9CA /* main.m */,
+				CE366E231DEC53A70080B9CA /* NibLoader.h */,
+				CE366E241DEC53A70080B9CA /* NibLoader.m */,
+			);
+			name = TestTasks;
+			sourceTree = "<group>";
+		};
 		CEA8AF841DD5E4D900A3D649 = {
 			isa = PBXGroup;
 			children = (
+				CE366E201DEC534E0080B9CA /* TestTasks */,
 				CEA8AF8F1DD5E4D900A3D649 /* RSSReader */,
 				CEA8AF8E1DD5E4D900A3D649 /* Products */,
 			);
@@ -97,6 +117,9 @@
 				CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */,
 				CEF8EDCE1DE4802500D8ED39 /* RSSParser.h */,
 				CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */,
+				CE366E281DEC63B50080B9CA /* RSSSource.h */,
+				CE366E291DEC63B50080B9CA /* RSSSource.m */,
+				CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -188,6 +211,9 @@
 				CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */,
 				CE9762851DE31F490086196D /* RSSDetailViewController.m in Sources */,
 				CE97626F1DE300CE0086196D /* RSSNews.m in Sources */,
+				CE366E1F1DEC53340080B9CA /* main.m in Sources */,
+				CE366E2A1DEC63B50080B9CA /* RSSSource.m in Sources */,
+				CE366E251DEC53A70080B9CA /* NibLoader.m in Sources */,
 				CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,14 +10,15 @@
 #import "RSSNews.h"
 #import "RSSTableViewCell.h"
 #import "RSSDetailViewController.h"
-#import "RSSParser.h"
+#import "RSSSource.h"
 
-@interface RSSTableViewController (){
+@interface RSSTableViewController () <RSSSourceDelegate>{
 	UIActivityIndicatorView *_spinner;
-	RSSLoader *_rssLoader;
-	RSSParser *_rssParser;
+	RSSSource *_rssSource;
 	int _clickedItem;
 }
+
+- (void)showError:(NSError*)err;
 
 @end
 
@@ -37,16 +38,14 @@
 
 	_spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	_spinner.center = CGPointMake(160, 240);
-	[self.view addSubview:_spinner];
 	_clickedItem = -1;
-	_rssParser = [RSSParser new];
-	_rssLoader = [RSSLoader loaderWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
-	_rssLoader.delegate = self;
-	[_rssLoader startLoading];
+	_rssSource = [RSSSource sourceWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
+	_rssSource.delegate = self;
+	[_rssSource refresh];
 }
 
 - (IBAction)refreshButtonTapped:(id)sender {
-	[_rssLoader startLoading];
+	[_rssSource refresh];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -58,6 +57,17 @@
 }
 
 - (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{}
+
+- (void)showError:(NSError *)err{
+	UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil)
+																	message:NSLocalizedString(@"Can not load RSS", nil)
+															 preferredStyle:UIAlertControllerStyleAlert];
+	UIAlertAction *alertAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", nil)
+														  style:UIAlertActionStyleDestructive
+														handler:nil];
+	[alert addAction:alertAction];
+	[self presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark - Table view data source
 
@@ -85,20 +95,22 @@
 	[self performSegueWithIdentifier:@"RSSNewsDetailSegue" sender:tableView];
 }
 
-#pragma mark - RSSLoaderDelegate
+#pragma mark - RSSSourceDelegate
 
-- (void)RSSLoader:(id)RSSLoader didStartLoading:(NSURL *)url{
+- (void)RSSSource:(id)RSSSource didStartRefreshing:(NSURL *)url{
+	[self.view addSubview:_spinner];
 	[_spinner startAnimating];
 }
 
-- (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data{
-	NSArray *parsed =  [_rssParser parse:data];
+- (void)RSSSource:(id)RSSSource didFinishRefreshing:(NSArray *)news{
+	[self.view addSubview:_spinner];
 	[_spinner removeFromSuperview];
-	self.newsList = parsed;
+	self.newsList = news;
 }
 
-- (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err{
-	NSLog(@"%@", err);
+- (void)RSSSource:(id)RSSSource didFailWithError:(NSError *)err{
+	[_spinner removeFromSuperview];
+	[self showError:err];
 }
 
 @end
