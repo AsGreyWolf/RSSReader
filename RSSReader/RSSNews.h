@@ -15,6 +15,7 @@
 @property(readonly, atomic) NSString* _Nonnull text;
 @property(readonly, atomic) NSURL* _Nullable url;
 @property(readonly, atomic) NSString* _Nonnull guid;
+@property(atomic) bool read;
 
 -(id _Nonnull)initWithTitle:(NSString * _Nonnull) title
 				   withDate:(NSDate * _Nullable) date

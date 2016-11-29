@@ -23,7 +23,7 @@
 	_data = data;
 	self.title.text = data.title;
 	self.text.text = data.text;
-	if(self.date)
+	if(data.date)
 		self.date.text = [NSDateFormatter localizedStringFromDate:data.date
 													dateStyle:NSDateFormatterShortStyle
 													timeStyle:NSDateFormatterShortStyle];
@@ -31,6 +31,11 @@
 		self.date.text = @"";
 	[self.date sizeToFit];
 	[self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+	NSString * font = [[self.title.font.fontName stringByReplacingOccurrencesOfString:@"-Bold" withString:@""]  stringByReplacingOccurrencesOfString:@"-Semibold" withString:@""];
+	if(!data.read)
+		self.title.font = [UIFont fontWithName:[NSString stringWithFormat:@"%@-Bold", font] size:self.title.font.pointSize];
+	else
+		self.title.font = [UIFont fontWithName:font size:self.title.font.pointSize];
 }
 
 - (void)awakeFromNib {

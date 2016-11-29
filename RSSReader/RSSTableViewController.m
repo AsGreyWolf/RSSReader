@@ -56,7 +56,9 @@
 	}
 }
 
-- (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{}
+- (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{
+	[self.tableView reloadData];
+}
 
 - (void)showError:(NSError *)err{
 	UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil)
@@ -98,6 +100,8 @@
 #pragma mark - RSSSourceDelegate
 
 - (void)RSSSource:(id)RSSSource didStartRefreshing:(NSURL *)url{
+	self.newsList = @[];
+	[self.tableView setContentOffset:CGPointZero animated:NO];
 	[self.view addSubview:_spinner];
 	[_spinner startAnimating];
 }

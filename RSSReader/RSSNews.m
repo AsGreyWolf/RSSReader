@@ -32,6 +32,7 @@
 	result.text = text;
 	result.url = url;
 	result.guid = guid;
+	result.read = false;
 	return result;
 }
 
