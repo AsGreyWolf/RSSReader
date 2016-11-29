@@ -26,14 +26,14 @@
 }
 
 - (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data{
-	NSArray *arr = [_parser parse:data];
+	RSSChannel * channel = [_parser parse:data];
 	dispatch_async(dispatch_get_main_queue(), ^{
-		if (!arr)
+		if (!channel)
 			[self.delegate RSSSource:self didFailWithError:[NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
 																			   code:42
 																		   userInfo:nil]];
 		else
-			[self.delegate RSSSource:self didFinishRefreshing:arr];
+			[self.delegate RSSSource:self didFinishRefreshing:channel];
 	});
 }
 

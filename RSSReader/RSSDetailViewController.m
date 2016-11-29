@@ -42,6 +42,7 @@
 	if(!news.url){
 		self.linkButton.enabled = false;
 	}
+	[self.text setContentOffset:CGPointZero animated:NO];
 }
 
 - (void)viewDidLoad {

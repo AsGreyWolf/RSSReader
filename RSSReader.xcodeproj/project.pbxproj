@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE2036A41DEDA8760018E9AF /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2036A31DEDA8760018E9AF /* RSSChannel.m */; };
 		CE366E1F1DEC53340080B9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E1E1DEC53340080B9CA /* main.m */; };
 		CE366E251DEC53A70080B9CA /* NibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E241DEC53A70080B9CA /* NibLoader.m */; };
 		CE366E2A1DEC63B50080B9CA /* RSSSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E291DEC63B50080B9CA /* RSSSource.m */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE2036A21DEDA8760018E9AF /* RSSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannel.h; sourceTree = "<group>"; };
+		CE2036A31DEDA8760018E9AF /* RSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannel.m; sourceTree = "<group>"; };
 		CE366E1E1DEC53340080B9CA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TestTasks/main.m; sourceTree = SOURCE_ROOT; };
 		CE366E231DEC53A70080B9CA /* NibLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NibLoader.h; path = TestTasks/NibLoader.h; sourceTree = "<group>"; };
 		CE366E241DEC53A70080B9CA /* NibLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NibLoader.m; path = TestTasks/NibLoader.m; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				CE366E281DEC63B50080B9CA /* RSSSource.h */,
 				CE366E291DEC63B50080B9CA /* RSSSource.m */,
 				CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */,
+				CE2036A21DEDA8760018E9AF /* RSSChannel.h */,
+				CE2036A31DEDA8760018E9AF /* RSSChannel.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE2036A41DEDA8760018E9AF /* RSSChannel.m in Sources */,
 				CEA8AF951DD5E4D900A3D649 /* AppDelegate.m in Sources */,
 				CEA8AF921DD5E4D900A3D649 /* main.m in Sources */,
 				CEA8AFA91DD5E6FF00A3D649 /* RSSTableViewController.m in Sources */,

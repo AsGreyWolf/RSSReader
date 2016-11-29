@@ -13,7 +13,9 @@
 	NSString * _Nonnull _description;
 	NSDate * _Nullable _date;
 	NSURL * _Nullable _url;
+	NSString * _Nonnull _guid;
 	NSMutableArray * _Nullable _newsList;
+	NSString * _Nonnull _channelName;
 	NSMutableArray * _Nonnull _stack;
 	NSDateFormatter * _Nonnull _dateFormatter;
 }
@@ -29,14 +31,17 @@
 	return @[@"EEE, dd MMM yyyy HH:mm:ss ZZ", @"dd MMM yyyy HH:mm:ss ZZ"];
 }
 
-- (NSArray* _Nullable)parse:(NSData* _Nonnull)data{
+- (RSSChannel* _Nullable)parse:(NSData* _Nonnull)data{
+	_channelName = @"";
 	_newsList = [NSMutableArray  new];
 	_stack = [NSMutableArray new];
 	_dateFormatter = [[NSDateFormatter alloc] init];
+	[_dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en-US"]];
 	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data];
 	parser.delegate = self;
 	[parser parse];
-	return _newsList;
+	if(!_newsList) return nil;
+	return [RSSChannel channelWithName:_channelName withNewsList:_newsList];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {
@@ -46,6 +51,7 @@
 		_description = @"";
 		_date = nil;
 		_url = nil;
+		_guid = @"";
 	}
 }
 
@@ -54,9 +60,11 @@
 	NSMutableString* str = [_stack objectAtIndex:top];
 	[_stack removeLastObject];
 	if ([elementName isEqualToString:@"item"]) {
-		[_newsList addObject:[RSSNews newsWithTitle:_title withDate:_date withText:_description withURL:_url]];
+		[_newsList addObject:[RSSNews newsWithTitle:_title withDate:_date withText:_description withURL:_url withGUID:_guid]];
 	} else if ([elementName isEqualToString:@"title"]) {
 		_title = str;
+		if(_stack.count == 2)
+			_channelName = _title;
 	} else if ([elementName isEqualToString:@"description"]) {
 		_description = str;
 	} else if ([elementName isEqualToString:@"pubDate"]) {
@@ -68,6 +76,8 @@
 		}
 	} else if ([elementName isEqualToString:@"link"]) {
 		_url = [NSURL URLWithString:str];
+	} else if ([elementName isEqualToString:@"guid"]) {
+		_guid = str;
 	}
 }
 

@@ -102,10 +102,11 @@
 	[_spinner startAnimating];
 }
 
-- (void)RSSSource:(id)RSSSource didFinishRefreshing:(NSArray *)news{
+- (void)RSSSource:(id)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
 	[self.view addSubview:_spinner];
 	[_spinner removeFromSuperview];
-	self.newsList = news;
+	self.newsList = rssChannel.newsList;
+	self.title = rssChannel.name;
 }
 
 - (void)RSSSource:(id)RSSSource didFailWithError:(NSError *)err{
