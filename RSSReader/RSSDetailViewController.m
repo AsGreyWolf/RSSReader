@@ -13,6 +13,8 @@
 @property (weak, nonatomic) IBOutlet UITextView *text;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *linkButton;
 
+- (void) update;
+
 @end
 
 
@@ -20,35 +22,41 @@
 
 - (void)setNews:(RSSNews *)news {
 	_news = news;
+	if(self.viewLoaded){
+		[self update];
+	}
+}
+
+- (void)update{
 	NSString *date;
-	if(news.date){
-		date = [NSDateFormatter localizedStringFromDate:news.date
-									   dateStyle:NSDateFormatterShortStyle
-									   timeStyle:NSDateFormatterShortStyle];
+	if(self.news.date){
+		date = [NSDateFormatter localizedStringFromDate:self.news.date
+											  dateStyle:NSDateFormatterShortStyle
+											  timeStyle:NSDateFormatterShortStyle];
 	}else{
 		date = @"";
 	}
 	NSMutableString *text = [NSMutableString stringWithFormat:@"<h1>%@</h1><em>%@</em><p>%@</p>",
-							 news.title,
+							 self.news.title,
 							 date,
-							 news.text];
+							 self.news.text];
 	self.text.attributedText = [[NSAttributedString alloc]
-						initWithData: [text dataUsingEncoding:NSUnicodeStringEncoding]
-						options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
-						documentAttributes: nil
-						error: nil
-					  ];
-	self.title = news.title;
-	if(!news.url){
+								initWithData: [text dataUsingEncoding:NSUnicodeStringEncoding]
+								options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
+								documentAttributes: nil
+								error: nil
+								];
+	self.title = self.news.title;
+	if(!self.news.url){
 		self.linkButton.enabled = false;
 	}
 	[self.text setContentOffset:CGPointZero animated:NO];
-	news.read = true;
+	self.news.read = true;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.news = self.news;
+	[self update];
 }
 
 - (IBAction)linkButtonTapped:(id)sender {
