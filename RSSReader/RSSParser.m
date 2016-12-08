@@ -8,7 +8,7 @@
 
 #import "RSSParser.h"
 
-@interface RSSParser (){
+@interface RSSParser () <NSXMLParserDelegate> {
 	NSString * _Nonnull _title;
 	NSString * _Nonnull _description;
 	NSDate * _Nullable _date;

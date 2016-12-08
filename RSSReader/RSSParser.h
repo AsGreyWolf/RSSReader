@@ -10,7 +10,7 @@
 #import "RSSChannel.h"
 #import "RSSNews.h"
 
-@interface RSSParser : NSObject<NSXMLParserDelegate>
+@interface RSSParser : NSObject
 
 - (RSSChannel* _Nullable)parse:(NSData* _Nonnull)data;
 
