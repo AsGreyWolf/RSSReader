@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NibLoader : NSObject
+@interface NSObject (NibLoader)
 
-- (id) loadType:(Class)type withNibName:(NSString *)name;
++ (id) loadType:(Class)type withNibName:(NSString *)name;
 
 @end

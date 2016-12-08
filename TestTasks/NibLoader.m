@@ -9,14 +9,13 @@
 #import "NibLoader.h"
 #import <UIKit/UIKit.h>
 
-@implementation NibLoader
+@implementation NSObject (NibLoader)
 
-- (id) loadType:(Class)type withNibName:(NSString *)name{
++ (id) loadType:(Class)type withNibName:(NSString *)name{
 	@try {
 		NSArray* elements = [[NSBundle mainBundle] loadNibNamed:name owner:self options:nil];
 		if (!elements) return nil;
-		for (int i=0; i < elements.count; i++){
-			id obj = [elements objectAtIndex:i];
+		for (id obj in elements){
 			if ([obj isKindOfClass:type])
 				return obj;
 		}
