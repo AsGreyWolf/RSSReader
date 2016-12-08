@@ -14,9 +14,9 @@
 	NSDate * _Nullable _date;
 	NSURL * _Nullable _url;
 	NSString * _Nonnull _guid;
-	NSMutableArray * _Nullable _newsList;
+	NSMutableArray<RSSNews *>* _Nullable _newsList;
 	NSString * _Nonnull _channelName;
-	NSMutableArray * _Nonnull _stack;
+	NSMutableArray<NSMutableString *> * _Nonnull _stack;
 	NSDateFormatter * _Nonnull _dateFormatter;
 }
 
