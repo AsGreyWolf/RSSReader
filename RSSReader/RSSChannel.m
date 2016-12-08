@@ -14,20 +14,20 @@
 }
 
 @property (strong, nonatomic) NSString * name;
-@property (strong, nonatomic) NSArray * newsList;
+@property (strong, nonatomic) NSArray<RSSNews *> * news;
 
 @end
 
 @implementation RSSChannel
 
-- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray*)newsList{
+- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray<RSSNews *>*)newsList{
 	self = [self init];
 	self.name = name;
-	self.newsList = newsList;
+	self.news = newsList;
 	return self;
 }
 
-+ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray*)newsList{
++ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray<RSSNews *>*)newsList{
 	return [[RSSChannel alloc] initWithName:name withNewsList:newsList];
 }
 

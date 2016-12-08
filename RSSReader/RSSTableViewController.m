@@ -55,7 +55,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
 		RSSDetailViewController *controller = [segue destinationViewController];
-		controller.news = [self.channel.newsList objectAtIndex:_clickedItem];
+		controller.news = [self.channel.news objectAtIndex:_clickedItem];
 		_clickedItem = -1;
 	}
 }
@@ -82,12 +82,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.channel.newsList.count;
+    return self.channel.news.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	RSSTableViewCell *cell = (RSSTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-	RSSNews *item = [self.channel.newsList objectAtIndex:indexPath.row];
+	RSSNews *item = [self.channel.news objectAtIndex:indexPath.row];
 	cell.data = item;
 	return cell;
 }

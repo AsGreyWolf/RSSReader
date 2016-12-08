@@ -106,6 +106,8 @@
 				CEA8AF941DD5E4D900A3D649 /* AppDelegate.m */,
 				CE97626D1DE300CE0086196D /* RSSNews.h */,
 				CE97626E1DE300CE0086196D /* RSSNews.m */,
+				CE2036A21DEDA8760018E9AF /* RSSChannel.h */,
+				CE2036A31DEDA8760018E9AF /* RSSChannel.m */,
 				CEA8AFA71DD5E6FF00A3D649 /* RSSTableViewController.h */,
 				CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */,
 				CE9762831DE31F490086196D /* RSSDetailViewController.h */,
@@ -123,8 +125,6 @@
 				CE366E281DEC63B50080B9CA /* RSSSource.h */,
 				CE366E291DEC63B50080B9CA /* RSSSource.m */,
 				CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */,
-				CE2036A21DEDA8760018E9AF /* RSSChannel.h */,
-				CE2036A31DEDA8760018E9AF /* RSSChannel.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";

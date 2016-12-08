@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RSSNews.h"
 
 @interface RSSChannel : NSObject
 
 @property (readonly, nonatomic) NSString * name;
-@property (readonly, nonatomic) NSArray * newsList;
+@property (readonly, nonatomic) NSArray<RSSNews *> * news;
 
-- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray*)newsList;
+- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray<RSSNews *>*)newsList;
 
-+ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray*)newsList;
++ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray<RSSNews *>*)newsList;
 
 @end
