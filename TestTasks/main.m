@@ -11,8 +11,7 @@
 
 int main2(int argc, char * argv[]) {
 	@autoreleasepool {
-		NibLoader *loader = [NibLoader new];
-		id value = [loader loadType:[UITableViewCell class] withNibName:@"RSSTableViewCell"];
+		id value = [NSObject loadType:[UITableViewCell class] withNibName:@"RSSTableViewCell"];
 		NSLog(@"%@",value);
 	}
 	return 0;

@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,33 +20,42 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" restorationIdentifier="title" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vh-W4-BGE">
-                        <rect key="frame" x="10" y="8" width="240" height="21"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                        <rect key="frame" x="8" y="8" width="242.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BVr-v4-iWq">
-                        <rect key="frame" x="5" y="37" width="307" height="62"/>
+                        <rect key="frame" x="3" y="37" width="312" height="62"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="date" text="date time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohc-qG-QXg">
-                        <rect key="frame" x="258" y="12" width="54" height="15"/>
+                        <rect key="frame" x="258.5" y="12" width="53.5" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Unread" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Yx-a8-ee3">
+                        <rect key="frame" x="8" y="8" width="152" height="21"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="3Yx-a8-ee3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="4EC-f8-viz"/>
                     <constraint firstItem="ohc-qG-QXg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="6dE-hw-tg5"/>
-                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="Edh-2L-kN9"/>
-                    <constraint firstAttribute="trailing" secondItem="BVr-v4-iWq" secondAttribute="trailing" constant="8" id="LnY-qV-iZt"/>
+                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Edh-2L-kN9"/>
+                    <constraint firstItem="3Yx-a8-ee3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="KTB-9h-N7p"/>
+                    <constraint firstAttribute="trailing" secondItem="BVr-v4-iWq" secondAttribute="trailing" constant="5" id="LnY-qV-iZt"/>
                     <constraint firstAttribute="bottom" secondItem="BVr-v4-iWq" secondAttribute="bottom" id="QMR-ws-JaD"/>
                     <constraint firstItem="9Vh-W4-BGE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZYK-hq-uTO"/>
+                    <constraint firstItem="3Yx-a8-ee3" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dwF-CJ-vWF"/>
                     <constraint firstItem="ohc-qG-QXg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="hWa-yA-caa"/>
-                    <constraint firstItem="BVr-v4-iWq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="txj-CE-2E2"/>
+                    <constraint firstItem="BVr-v4-iWq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="3" id="txj-CE-2E2"/>
                     <constraint firstItem="BVr-v4-iWq" firstAttribute="top" secondItem="9Vh-W4-BGE" secondAttribute="bottom" constant="8" id="wQi-95-8Ag"/>
                     <constraint firstItem="ohc-qG-QXg" firstAttribute="leading" secondItem="9Vh-W4-BGE" secondAttribute="trailing" constant="8" id="yVu-HX-3ma"/>
                 </constraints>
@@ -54,6 +64,7 @@
                 <outlet property="date" destination="ohc-qG-QXg" id="Oro-SG-9C2"/>
                 <outlet property="text" destination="BVr-v4-iWq" id="bYR-tm-pDo"/>
                 <outlet property="title" destination="9Vh-W4-BGE" id="TUE-GA-PP4"/>
+                <outlet property="title_unread" destination="3Yx-a8-ee3" id="LUX-mk-VxF"/>
             </connections>
         </tableViewCell>
     </objects>

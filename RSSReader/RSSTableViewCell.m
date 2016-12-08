@@ -11,6 +11,7 @@
 @interface RSSTableViewCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *title_unread;
 @property (weak, nonatomic) IBOutlet UILabel *date;
 @property (weak, nonatomic) IBOutlet UITextView *text;
 
@@ -22,6 +23,7 @@
 -(void)setData:(RSSNews *)data{
 	_data = data;
 	self.title.text = data.title;
+	self.title_unread.text = data.title;
 	self.text.text = data.text;
 	if(data.date)
 		self.date.text = [NSDateFormatter localizedStringFromDate:data.date
@@ -30,12 +32,8 @@
 	else
 		self.date.text = @"";
 	[self.date sizeToFit];
-	[self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
-	NSString * font = [[self.title.font.fontName stringByReplacingOccurrencesOfString:@"-Bold" withString:@""]  stringByReplacingOccurrencesOfString:@"-Semibold" withString:@""];
-	if(!data.read)
-		self.title.font = [UIFont fontWithName:[NSString stringWithFormat:@"%@-Bold", font] size:self.title.font.pointSize];
-	else
-		self.title.font = [UIFont fontWithName:font size:self.title.font.pointSize];
+	self.title.hidden = !data.read;
+	self.title_unread.hidden = data.read;
 }
 
 - (void)awakeFromNib {
