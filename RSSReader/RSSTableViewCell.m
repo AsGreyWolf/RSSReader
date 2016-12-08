@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *title_unread;
 @property (weak, nonatomic) IBOutlet UILabel *date;
-@property (weak, nonatomic) IBOutlet UITextView *text;
+@property (weak, nonatomic) IBOutlet UILabel *text;
 
 @end
 
@@ -39,7 +39,7 @@
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	self.title.lineBreakMode = NSLineBreakByTruncatingTail;
-	self.text.textContainer.lineBreakMode = NSLineBreakByTruncatingTail;
+	self.text.lineBreakMode = NSLineBreakByTruncatingTail;
 }
 
 @end
