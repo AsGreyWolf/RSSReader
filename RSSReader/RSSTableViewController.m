@@ -13,6 +13,8 @@
 #import "RSSSource.h"
 
 @interface RSSTableViewController () <RSSSourceDelegate>{
+	UIBarButtonItem *_refreshButtonBarItem;
+	UIBarButtonItem *_spinnerBarItem;
 	UIActivityIndicatorView *_spinner;
 	RSSSource *_rssSource;
 	int _clickedItem;
@@ -37,7 +39,9 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
 
 	_spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	_spinner.center = CGPointMake(160, 240);
+	_spinnerBarItem = [[UIBarButtonItem alloc] initWithCustomView:_spinner];
+	_refreshButtonBarItem = self.navigationItem.rightBarButtonItem;
+
 	_clickedItem = -1;
 	_rssSource = [RSSSource sourceWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
 	_rssSource.delegate = self;
@@ -101,18 +105,17 @@
 
 - (void)RSSSource:(id)RSSSource didStartRefreshing:(NSURL *)url{
 	[self.tableView setContentOffset:CGPointZero animated:NO];
-	[self.view addSubview:_spinner];
+	self.navigationItem.rightBarButtonItem = _spinnerBarItem;
 	[_spinner startAnimating];
 }
 
 - (void)RSSSource:(id)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
-	[self.view addSubview:_spinner];
-	[_spinner removeFromSuperview];
+	self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
 	self.channel = rssChannel;
 }
 
 - (void)RSSSource:(id)RSSSource didFailWithError:(NSError *)err{
-	[_spinner removeFromSuperview];
+	self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
 	[self showError:err];
 }
 
