@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@class RSSLoader;
+
 @protocol RSSLoaderDelegate <NSObject>
 
-- (void)RSSLoader:(id)RSSLoader didStartLoading:(NSURL *)url;
-- (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data;
-- (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err;
+- (void)RSSLoader:(RSSLoader*)RSSLoader didStartLoading:(NSURL *)url;
+- (void)RSSLoader:(RSSLoader*)RSSLoader didFinishLoading:(NSData *)data;
+- (void)RSSLoader:(RSSLoader*)RSSLoader didFailWithError:(NSError *)err;
 
 @end

@@ -103,18 +103,18 @@
 
 #pragma mark - RSSSourceDelegate
 
-- (void)RSSSource:(id)RSSSource didStartRefreshing:(NSURL *)url{
+- (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
 	[self.tableView setContentOffset:CGPointZero animated:NO];
 	self.navigationItem.rightBarButtonItem = _spinnerBarItem;
 	[_spinner startAnimating];
 }
 
-- (void)RSSSource:(id)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
+- (void)RSSSource:(RSSSource*)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
 	self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
 	self.channel = rssChannel;
 }
 
-- (void)RSSSource:(id)RSSSource didFailWithError:(NSError *)err{
+- (void)RSSSource:(RSSSource*)RSSSource didFailWithError:(NSError *)err{
 	self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
 	[self showError:err];
 }

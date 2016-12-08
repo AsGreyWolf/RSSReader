@@ -21,13 +21,13 @@
 
 @implementation RSSSource
 
-- (void)RSSLoader:(id)RSSLoader didStartLoading:(NSURL *)url{
+- (void)RSSLoader:(RSSLoader*)RSSLoader didStartLoading:(NSURL *)url{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self.delegate RSSSource:self didStartRefreshing:url];
 	});
 }
 
-- (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data{
+- (void)RSSLoader:(RSSLoader*)RSSLoader didFinishLoading:(NSData *)data{
 	RSSChannel * channel = [_parser parse:data];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		if (!channel)
@@ -39,7 +39,7 @@
 	});
 }
 
-- (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err{
+- (void)RSSLoader:(RSSLoader*)RSSLoader didFailWithError:(NSError *)err{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self.delegate RSSSource:self didFailWithError:err];
 	});
