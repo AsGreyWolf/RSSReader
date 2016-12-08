@@ -13,8 +13,8 @@
 @property (readonly, nonatomic) NSString * name;
 @property (readonly, nonatomic) NSArray * newsList;
 
-- (id) initWithName:(NSString*)name withNewsList:(NSArray*)newsList;
+- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray*)newsList;
 
-+ (id) channelWithName:(NSString*)name withNewsList:(NSArray*)newsList;
++ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray*)newsList;
 
 @end

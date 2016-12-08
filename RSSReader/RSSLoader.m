@@ -34,14 +34,14 @@
 	[_task resume];
 }
 
-- (id)initWithURL:(NSURL*)url{
+- (instancetype)initWithURL:(NSURL*)url{
 	self = [self init];
 	_url = url;
 	return self;
 }
 
 
-+ (id)loaderWithURL:(NSURL*)url{
++ (instancetype)loaderWithURL:(NSURL*)url{
 	return [[RSSLoader alloc] initWithURL:url];
 }
 

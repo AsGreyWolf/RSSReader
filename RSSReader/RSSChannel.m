@@ -20,14 +20,14 @@
 
 @implementation RSSChannel
 
-- (id) initWithName:(NSString*)name withNewsList:(NSArray*)newsList{
+- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray*)newsList{
 	self = [self init];
 	self.name = name;
 	self.newsList = newsList;
 	return self;
 }
 
-+ (id) channelWithName:(NSString*)name withNewsList:(NSArray*)newsList{
++ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray*)newsList{
 	return [[RSSChannel alloc] initWithName:name withNewsList:newsList];
 }
 

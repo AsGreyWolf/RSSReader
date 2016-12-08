@@ -25,8 +25,9 @@
 
 @implementation RSSTableViewController
 
--(void)setNewsList:(NSArray *)newsList{
-	_newsList = newsList;
+-(void)setChannel:(RSSChannel *)channel{
+	_channel = channel;
+	self.title = channel.name;
 	[self.tableView reloadData];
 }
 
@@ -34,7 +35,6 @@
 	[super viewDidLoad];
 	UINib *cellNib = [UINib nibWithNibName:@"RSSTableViewCell" bundle:nil];
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
-	self.newsList = @[];
 
 	_spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	_spinner.center = CGPointMake(160, 240);
@@ -51,7 +51,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
 		RSSDetailViewController *controller = [segue destinationViewController];
-		controller.news = [self.newsList objectAtIndex:_clickedItem];
+		controller.news = [self.channel.newsList objectAtIndex:_clickedItem];
 		_clickedItem = -1;
 	}
 }
@@ -78,12 +78,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.newsList count];
+    return self.channel.newsList.count;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 	RSSTableViewCell *cell = (RSSTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
-	RSSNews *item = [self.newsList objectAtIndex:indexPath.row];
+	RSSNews *item = [self.channel.newsList objectAtIndex:indexPath.row];
 	cell.data = item;
 	return cell;
 }
@@ -100,7 +100,6 @@
 #pragma mark - RSSSourceDelegate
 
 - (void)RSSSource:(id)RSSSource didStartRefreshing:(NSURL *)url{
-	self.newsList = @[];
 	[self.tableView setContentOffset:CGPointZero animated:NO];
 	[self.view addSubview:_spinner];
 	[_spinner startAnimating];
@@ -109,8 +108,7 @@
 - (void)RSSSource:(id)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
 	[self.view addSubview:_spinner];
 	[_spinner removeFromSuperview];
-	self.newsList = rssChannel.newsList;
-	self.title = rssChannel.name;
+	self.channel = rssChannel;
 }
 
 - (void)RSSSource:(id)RSSSource didFailWithError:(NSError *)err{

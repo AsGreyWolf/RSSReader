@@ -22,7 +22,9 @@
 @implementation RSSSource
 
 - (void)RSSLoader:(id)RSSLoader didStartLoading:(NSURL *)url{
-	[self.delegate RSSSource:self didStartRefreshing:url];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.delegate RSSSource:self didStartRefreshing:url];
+	});
 }
 
 - (void)RSSLoader:(id)RSSLoader didFinishLoading:(NSData *)data{
@@ -38,14 +40,16 @@
 }
 
 - (void)RSSLoader:(id)RSSLoader didFailWithError:(NSError *)err{
-	[self.delegate RSSSource:self didFailWithError:err];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.delegate RSSSource:self didFailWithError:err];
+	});
 }
 
 - (void)refresh{
 	[_loader startLoading];
 }
 
-- (id)initWithURL:(NSURL*)url{
+- (instancetype)initWithURL:(NSURL*)url{
 	self = [self init];
 	_url = url;
 	_loader = [RSSLoader loaderWithURL:url];
@@ -54,7 +58,7 @@
 	return self;
 }
 
-+ (id)sourceWithURL:(NSURL*)url{
++ (instancetype)sourceWithURL:(NSURL*)url{
 	return [[RSSSource alloc] initWithURL:url];
 }
 

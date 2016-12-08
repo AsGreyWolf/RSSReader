@@ -17,16 +17,16 @@
 @property(readonly, atomic) NSString* _Nonnull guid;
 @property(atomic) bool read;
 
--(id _Nonnull)initWithTitle:(NSString * _Nonnull) title
-				   withDate:(NSDate * _Nullable) date
-				   withText:(NSString * _Nonnull)text
-					withURL:(NSURL * _Nullable)url
-				   withGUID:(NSString * _Nonnull)guid;
+-(instancetype _Nonnull)initWithTitle:(NSString * _Nonnull) title
+							 withDate:(NSDate * _Nullable) date
+							 withText:(NSString * _Nonnull)text
+							  withURL:(NSURL * _Nullable)url
+							 withGUID:(NSString * _Nonnull)guid;
 
-+(id _Nonnull)newsWithTitle:(NSString * _Nonnull) title
-				   withDate:(NSDate * _Nullable) date
-				   withText:(NSString * _Nonnull) text
-					withURL:(NSURL * _Nullable) url
-				   withGUID:(NSString * _Nonnull)guid;
++(instancetype _Nonnull)newsWithTitle:(NSString * _Nonnull) title
+							 withDate:(NSDate * _Nullable) date
+							 withText:(NSString * _Nonnull) text
+							  withURL:(NSURL * _Nullable) url
+							 withGUID:(NSString * _Nonnull)guid;
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RSSChannel.h"
 
 @interface RSSTableViewController : UITableViewController
 
-@property(strong, nonatomic) NSArray* newsList;
+@property(strong, nonatomic) RSSChannel* channel;
 
 @end
