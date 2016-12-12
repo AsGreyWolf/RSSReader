@@ -12,10 +12,11 @@
 @interface RSSChannel : NSObject
 
 @property (readonly, nonatomic) NSString * name;
+@property (readonly, nonatomic) NSURL * url;
 @property (readonly, nonatomic) NSArray<RSSNews *> * news;
 
-- (instancetype) initWithName:(NSString*)name withNewsList:(NSArray<RSSNews *>*)newsList;
+- (instancetype) initWithName:(NSString*)name withUrl:(NSURL*)url withNewsList:(NSArray<RSSNews *>*)newsList;
 
-+ (instancetype) channelWithName:(NSString*)name withNewsList:(NSArray<RSSNews *>*)newsList;
++ (instancetype) channelWithName:(NSString*)name withUrl:(NSURL*)url withNewsList:(NSArray<RSSNews *>*)newsList;
 
 @end

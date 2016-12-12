@@ -7,6 +7,8 @@
 //
 
 #import "RSSNews.h"
+#import "RSSNewsModel+CoreDataClass.h"
+#import "NSManagedObjectContext+contextWithSqlite.h"
 
 @interface RSSNews()
 
@@ -21,6 +23,36 @@
 
 @implementation RSSNews
 
+@synthesize read = _read;
+
+-(void)setRead:(bool)read{
+	_read = read;
+	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+		NSManagedObjectContext *context = [NSManagedObjectContext contextWithSharedContext];
+		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSNewsModel"];
+		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"guid like %@",self.guid];
+		NSError *dbError;
+		NSArray <RSSNewsModel*> *dbResult = [context executeFetchRequest:fetchRequest
+																   error:&dbError];
+		if(dbError!=nil){
+			NSLog(@"%@",dbError);
+			abort();
+		}
+		for(RSSNewsModel *dbNews in dbResult)
+			dbNews.read = read;
+		if(![context save:&dbError]){
+			NSLog(@"%@",dbError);
+			abort();
+		}
+		if(![[NSManagedObjectContext mainContext] save:&dbError]){
+			NSLog(@"%@",dbError);
+			abort();
+		}
+	});
+}
+-(bool)read{
+	return _read;
+}
 -(instancetype _Nonnull)initWithTitle:(NSString * _Nonnull) title
 							 withDate:(NSDate * _Nullable) date
 							 withText:(NSString * _Nonnull) text
@@ -32,7 +64,22 @@
 	result.text = text;
 	result.url = url;
 	result.guid = guid;
-	result.read = false;
+	dispatch_async(dispatch_get_main_queue(), ^{
+		NSManagedObjectContext *context = [NSManagedObjectContext mainContext];
+		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSNewsModel"];
+		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"guid like %@",self.guid];
+		NSError *dbError;
+		NSArray <RSSNewsModel*> *dbResult = [context executeFetchRequest:fetchRequest
+																   error:&dbError];
+		if(dbError!=nil){
+			NSLog(@"%@",dbError);
+			abort();
+		}
+		for(RSSNewsModel *dbNews in dbResult) {
+			_read = dbNews.read;
+			break;
+		}
+	});
 	return result;
 }
 

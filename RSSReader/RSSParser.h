@@ -12,6 +12,6 @@
 
 @interface RSSParser : NSObject
 
-- (RSSChannel* _Nullable)parse:(NSData* _Nonnull)data;
+- (RSSChannel* _Nullable)parse:(NSData* _Nonnull)data withUrl:(NSURL* _Nonnull)url;
 
 @end

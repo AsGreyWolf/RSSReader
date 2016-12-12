@@ -31,7 +31,7 @@
 	return @[@"EEE, dd MMM yyyy HH:mm:ss ZZ", @"dd MMM yyyy HH:mm:ss ZZ"];
 }
 
-- (RSSChannel* _Nullable)parse:(NSData* _Nonnull)data{
+- (RSSChannel* _Nullable)parse:(NSData* _Nonnull)data withUrl:(NSURL*)url{
 	_channelName = @"";
 	_newsList = [NSMutableArray  new];
 	_stack = [NSMutableArray new];
@@ -41,7 +41,9 @@
 	parser.delegate = self;
 	[parser parse];
 	if(!_newsList) return nil;
-	return [RSSChannel channelWithName:_channelName withNewsList:_newsList];
+	return [RSSChannel channelWithName:_channelName
+							   withUrl:url
+						  withNewsList:_newsList];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *) qualifiedName attributes:(NSDictionary *)attributeDict {

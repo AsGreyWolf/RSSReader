@@ -10,7 +10,7 @@
 #import "RSSNews.h"
 #import "RSSTableViewCell.h"
 #import "RSSDetailViewController.h"
-#import "RSSSource.h"
+#import "RSSCachedSource.h"
 
 @interface RSSTableViewController () <RSSSourceDelegate>{
 	UIBarButtonItem *_refreshButtonBarItem;
@@ -43,7 +43,7 @@
 	_refreshButtonBarItem = self.navigationItem.rightBarButtonItem;
 
 	_clickedItem = -1;
-	_rssSource = [RSSSource sourceWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
+	_rssSource = [RSSCachedSource sourceWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
 	_rssSource.delegate = self;
 	[_rssSource refresh];
 }
@@ -104,19 +104,25 @@
 #pragma mark - RSSSourceDelegate
 
 - (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
-	[self.tableView setContentOffset:CGPointZero animated:NO];
-	self.navigationItem.rightBarButtonItem = _spinnerBarItem;
-	[_spinner startAnimating];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		[self.tableView setContentOffset:CGPointZero animated:NO];
+		self.navigationItem.rightBarButtonItem = _spinnerBarItem;
+		[_spinner startAnimating];
+	});
 }
 
 - (void)RSSSource:(RSSSource*)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
-	self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
-	self.channel = rssChannel;
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
+		self.channel = rssChannel;
+	});
 }
 
 - (void)RSSSource:(RSSSource*)RSSSource didFailWithError:(NSError *)err{
-	self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
-	[self showError:err];
+	dispatch_async(dispatch_get_main_queue(), ^{
+		self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
+		[self showError:err];
+	});
 }
 
 @end

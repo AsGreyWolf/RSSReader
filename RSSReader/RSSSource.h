@@ -14,8 +14,5 @@
 @property (nonatomic, weak) id <RSSSourceDelegate> delegate;
 
 - (void)refresh;
-- (instancetype)initWithURL:(NSURL*)url;
-
-+ (instancetype)sourceWithURL:(NSURL*)url;
 
 @end
