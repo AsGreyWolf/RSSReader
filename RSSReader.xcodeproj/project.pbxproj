@@ -114,30 +114,17 @@
 		CEA8AF8F1DD5E4D900A3D649 /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
-				CEEC5C741DF95F5300384C0A /* gui */,
-				CE97626D1DE300CE0086196D /* RSSNews.h */,
-				CE97626E1DE300CE0086196D /* RSSNews.m */,
-				CE2036A21DEDA8760018E9AF /* RSSChannel.h */,
-				CE2036A31DEDA8760018E9AF /* RSSChannel.m */,
-				CEF8EDCB1DE4784600D8ED39 /* RSSLoader.h */,
-				CEF8EDCC1DE4784600D8ED39 /* RSSLoader.m */,
-				CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */,
-				CEF8EDCE1DE4802500D8ED39 /* RSSParser.h */,
-				CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */,
-				CE366E281DEC63B50080B9CA /* RSSSource.h */,
-				CEEC5C7E1DF97E6C00384C0A /* RSSSource.m */,
-				CEEC5C7B1DF97C7200384C0A /* RSSUrlSource.h */,
-				CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */,
-				CEEC5C801DF97ED800384C0A /* RSSCachedSource.h */,
-				CEEC5C811DF97ED800384C0A /* RSSCachedSource.m */,
-				CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */,
+				CEE635D91DFEF8F200E30F5A /* news */,
+				CEE635D71DFEF8AA00E30F5A /* channel */,
+				CEE635DB1DFEF9B600E30F5A /* channelList */,
+				CEE635D61DFEF87800E30F5A /* db */,
+				CEA8AF991DD5E4D900A3D649 /* Main.storyboard */,
+				CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */,
 				CEA8AF931DD5E4D900A3D649 /* AppDelegate.h */,
 				CEA8AF941DD5E4D900A3D649 /* AppDelegate.m */,
 				CEA8AF9C1DD5E4D900A3D649 /* Assets.xcassets */,
 				CEA8AFA11DD5E4D900A3D649 /* Info.plist */,
 				CEA8AF901DD5E4D900A3D649 /* Supporting Files */,
-				CE2D391D1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.h */,
-				CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */,
 				CE2D392C1DFAF82800E89973 /* Model.xcdatamodeld */,
 			);
 			path = RSSReader;
@@ -151,18 +138,79 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CEE635D61DFEF87800E30F5A /* db */ = {
+			isa = PBXGroup;
+			children = (
+				CE2D391D1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.h */,
+				CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */,
+			);
+			name = db;
+			sourceTree = "<group>";
+		};
+		CEE635D71DFEF8AA00E30F5A /* channel */ = {
+			isa = PBXGroup;
+			children = (
+				CEEC5C741DF95F5300384C0A /* gui */,
+				CE2036A21DEDA8760018E9AF /* RSSChannel.h */,
+				CE2036A31DEDA8760018E9AF /* RSSChannel.m */,
+				CEF8EDCB1DE4784600D8ED39 /* RSSLoader.h */,
+				CEF8EDCC1DE4784600D8ED39 /* RSSLoader.m */,
+				CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */,
+				CEF8EDCE1DE4802500D8ED39 /* RSSParser.h */,
+				CEF8EDCF1DE4802500D8ED39 /* RSSParser.m */,
+				CE366E281DEC63B50080B9CA /* RSSSource.h */,
+				CEEC5C7E1DF97E6C00384C0A /* RSSSource.m */,
+				CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */,
+				CEEC5C7B1DF97C7200384C0A /* RSSUrlSource.h */,
+				CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */,
+				CEEC5C801DF97ED800384C0A /* RSSCachedSource.h */,
+				CEEC5C811DF97ED800384C0A /* RSSCachedSource.m */,
+			);
+			name = channel;
+			sourceTree = "<group>";
+		};
+		CEE635D91DFEF8F200E30F5A /* news */ = {
+			isa = PBXGroup;
+			children = (
+				CEE635DA1DFEF8FD00E30F5A /* gui */,
+				CE97626D1DE300CE0086196D /* RSSNews.h */,
+				CE97626E1DE300CE0086196D /* RSSNews.m */,
+			);
+			name = news;
+			sourceTree = "<group>";
+		};
+		CEE635DA1DFEF8FD00E30F5A /* gui */ = {
+			isa = PBXGroup;
+			children = (
+				CE9762831DE31F490086196D /* RSSDetailViewController.h */,
+				CE9762841DE31F490086196D /* RSSDetailViewController.m */,
+			);
+			name = gui;
+			sourceTree = "<group>";
+		};
+		CEE635DB1DFEF9B600E30F5A /* channelList */ = {
+			isa = PBXGroup;
+			children = (
+				CEE635DC1DFEF9C900E30F5A /* gui */,
+			);
+			name = channelList;
+			sourceTree = "<group>";
+		};
+		CEE635DC1DFEF9C900E30F5A /* gui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = gui;
+			sourceTree = "<group>";
+		};
 		CEEC5C741DF95F5300384C0A /* gui */ = {
 			isa = PBXGroup;
 			children = (
 				CEA8AFA71DD5E6FF00A3D649 /* RSSTableViewController.h */,
 				CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */,
-				CE9762831DE31F490086196D /* RSSDetailViewController.h */,
-				CE9762841DE31F490086196D /* RSSDetailViewController.m */,
-				CEA8AF991DD5E4D900A3D649 /* Main.storyboard */,
 				CE9762781DE311220086196D /* RSSTableViewCell.h */,
 				CE9762791DE311220086196D /* RSSTableViewCell.m */,
 				CE97627A1DE311220086196D /* RSSTableViewCell.xib */,
-				CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */,
 			);
 			name = gui;
 			sourceTree = "<group>";

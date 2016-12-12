@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Jll-iL-XDK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9sd-bh-y7i">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--RSSReader-->
+        <!--Channel-->
         <scene sceneID="n2O-Kg-h1f">
             <objects>
                 <tableViewController id="adm-SE-XC1" customClass="RSSTableViewController" sceneMemberID="viewController">
@@ -35,7 +35,7 @@
                             <outlet property="delegate" destination="adm-SE-XC1" id="R7C-la-iur"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RSSReader" id="Lab-NP-xeP">
+                    <navigationItem key="navigationItem" title="Channel" id="Lab-NP-xeP">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ssr-B8-Lzf">
                             <connections>
                                 <action selector="refreshButtonTapped:" destination="adm-SE-XC1" id="ggQ-Pu-blD"/>
@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="944.79999999999995" y="691.304347826087"/>
         </scene>
-        <!--Title-->
+        <!--News-->
         <scene sceneID="0Aa-ud-ANk">
             <objects>
                 <viewController id="gTz-Jy-yLE" customClass="RSSDetailViewController" sceneMemberID="viewController">
@@ -76,7 +76,7 @@
                             <constraint firstItem="q8N-HC-Lpj" firstAttribute="top" secondItem="f9n-Su-B39" secondAttribute="topMargin" id="QJ0-Nk-p3v"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="xHI-w2-Zea">
+                    <navigationItem key="navigationItem" title="News" id="xHI-w2-Zea">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="H3o-BB-TZ8">
                             <connections>
                                 <segue destination="7yt-Nl-old" kind="unwind" unwindAction="unwindFromDetail:" id="XAQ-mc-lOI"/>
@@ -96,25 +96,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0s-Ks-Zdn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7yt-Nl-old" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="691.304347826087"/>
+            <point key="canvasLocation" x="1855" y="690"/>
+        </scene>
+        <!--RSSReader-->
+        <scene sceneID="wtm-0f-tK2">
+            <objects>
+                <tableViewController title="RSSReader" id="V73-M4-0Bk" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ufr-PF-Apz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="jgI-sD-A8W" style="IBUITableViewCellStyleDefault" id="7wq-Zm-ZR7">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7wq-Zm-ZR7" id="hHK-aU-XOK">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jgI-sD-A8W">
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="adm-SE-XC1" kind="show" id="yMS-eQ-flY"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="V73-M4-0Bk" id="VQ1-5d-agD"/>
+                            <outlet property="delegate" destination="V73-M4-0Bk" id="oLk-9w-lNa"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="RSSReader" id="8os-bE-9FL"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mUN-Fd-15e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111" y="691"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="miY-RD-21F">
+        <scene sceneID="Wyo-Ea-0Ca">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jll-iL-XDK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9sd-bh-y7i" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BFn-7x-kzn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8V-FY-Imz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="adm-SE-XC1" kind="relationship" relationship="rootViewController" id="jFc-ab-YFJ"/>
+                        <segue destination="V73-M4-0Bk" kind="relationship" relationship="rootViewController" id="NNJ-o2-cyj"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aIb-cR-Byd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDo-6n-usM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="36" y="692.20389805097454"/>
+            <point key="canvasLocation" x="-665" y="691"/>
         </scene>
     </scenes>
 </document>
