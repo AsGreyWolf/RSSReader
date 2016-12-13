@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RSSNewsModel+CoreDataClass.h"
 
 @interface RSSNews : NSObject
 
@@ -17,12 +18,14 @@
 @property(readonly, atomic) NSString* _Nonnull guid;
 @property(atomic) bool read;
 
+-(void)writeModel:(RSSNewsModel * _Nonnull)model withChannel:(RSSChannelModel * _Nonnull)channel;
 -(instancetype _Nonnull)initWithTitle:(NSString * _Nonnull) title
 							 withDate:(NSDate * _Nullable) date
 							 withText:(NSString * _Nonnull)text
 							  withURL:(NSURL * _Nullable)url
 							 withGUID:(NSString * _Nonnull)guid;
 
++(instancetype _Nonnull)newsWithModel:(RSSNewsModel * _Nonnull)model;
 +(instancetype _Nonnull)newsWithTitle:(NSString * _Nonnull) title
 							 withDate:(NSDate * _Nullable) date
 							 withText:(NSString * _Nonnull) text

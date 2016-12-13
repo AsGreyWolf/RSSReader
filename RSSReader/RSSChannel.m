@@ -31,7 +31,27 @@
 	self.url = url;
 	return self;
 }
+- (void) writeModel:(RSSChannelModel *)model{
+	model.name = self.name;
+	model.url = [self.url absoluteString];
+	for(RSSNews *news in self.news){
+		RSSNewsModel *dbNews = [NSEntityDescription insertNewObjectForEntityForName:@"RSSNewsModel"
+															 inManagedObjectContext:model.managedObjectContext];
+		[news writeModel:dbNews
+			 withChannel:model];
+	}
+}
 
++ (instancetype) channelWithModel:(RSSChannelModel *)model{
+	NSSet <RSSNewsModel*> *dbNewsList = model.news;
+	NSMutableArray<RSSNews*> *newsList = [NSMutableArray new];
+	for(RSSNewsModel * dbNews in dbNewsList)
+		[newsList addObject:[RSSNews newsWithModel:dbNews]];
+	RSSChannel * result = [RSSChannel channelWithName:model.name
+											  withUrl:[NSURL URLWithString:model.url]
+										 withNewsList:newsList];
+	return result;
+}
 + (instancetype) channelWithName:(NSString*)name
 						 withUrl:(NSURL*)url
 					withNewsList:(NSArray<RSSNews *>*)newsList{

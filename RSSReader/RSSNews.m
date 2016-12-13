@@ -82,7 +82,26 @@
 	});
 	return result;
 }
+-(void)writeModel:(RSSNewsModel * _Nonnull)model
+	  withChannel:(RSSChannelModel * _Nonnull)channel{
+	model.title = self.title;
+	model.date = self.date;
+	model.text = self.text;
+	model.url = [self.url absoluteString];
+	model.guid = self.guid;
+	model.read = self.read;
+	model.channel = channel;
+}
 
+
++(instancetype _Nonnull)newsWithModel:(RSSNewsModel * _Nonnull)model{
+	RSSNews *result = [RSSNews newsWithTitle:model.title
+									withDate:model.date
+									withText:model.text
+									 withURL:[NSURL URLWithString:model.url]
+									withGUID:model.guid];
+	return result;
+}
 +(instancetype _Nonnull)newsWithTitle:(NSString * _Nonnull) title
 							 withDate:(NSDate * _Nullable) date
 							 withText:(NSString * _Nonnull) text
