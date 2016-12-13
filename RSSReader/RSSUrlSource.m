@@ -28,7 +28,6 @@
 	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 		RSSChannel * channel = [_parser parse:data
 									  withUrl:_url];
-		channel = nil;
 		if (!channel)
 			[self.delegate RSSSource:self
 					didFailWithError:[NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
