@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0B23E61DFFAD8700DC9F88 /* RSSDatabaseSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0B23E51DFFAD8700DC9F88 /* RSSDatabaseSource.m */; };
 		CE2036A41DEDA8760018E9AF /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2036A31DEDA8760018E9AF /* RSSChannel.m */; };
 		CE2D391F1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */; };
 		CE2D392E1DFAF82800E89973 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE2D392C1DFAF82800E89973 /* Model.xcdatamodeld */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0B23E41DFFAD8700DC9F88 /* RSSDatabaseSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSDatabaseSource.h; sourceTree = "<group>"; };
+		CE0B23E51DFFAD8700DC9F88 /* RSSDatabaseSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSDatabaseSource.m; sourceTree = "<group>"; };
 		CE2036A21DEDA8760018E9AF /* RSSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannel.h; sourceTree = "<group>"; };
 		CE2036A31DEDA8760018E9AF /* RSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannel.m; sourceTree = "<group>"; };
 		CE2D391D1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+contextWithSqlite.h"; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */,
 				CEEC5C7B1DF97C7200384C0A /* RSSUrlSource.h */,
 				CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */,
+				CE0B23E41DFFAD8700DC9F88 /* RSSDatabaseSource.h */,
+				CE0B23E51DFFAD8700DC9F88 /* RSSDatabaseSource.m */,
 				CEEC5C801DF97ED800384C0A /* RSSCachedSource.h */,
 				CEEC5C811DF97ED800384C0A /* RSSCachedSource.m */,
 			);
@@ -304,6 +309,7 @@
 				CEEC5C7F1DF97E6C00384C0A /* RSSSource.m in Sources */,
 				CEF8EDD01DE4802500D8ED39 /* RSSParser.m in Sources */,
 				CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */,
+				CE0B23E61DFFAD8700DC9F88 /* RSSDatabaseSource.m in Sources */,
 				CE9762851DE31F490086196D /* RSSDetailViewController.m in Sources */,
 				CE97626F1DE300CE0086196D /* RSSNews.m in Sources */,
 				CE2D392E1DFAF82800E89973 /* Model.xcdatamodeld in Sources */,
