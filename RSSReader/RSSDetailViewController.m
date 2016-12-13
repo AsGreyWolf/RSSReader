@@ -13,7 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *text;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *linkButton;
 
-- (void) update;
+- (void)update;
 
 @end
 

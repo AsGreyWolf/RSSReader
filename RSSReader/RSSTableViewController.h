@@ -11,6 +11,6 @@
 
 @interface RSSTableViewController : UITableViewController
 
-@property(strong, nonatomic) RSSChannel* channel;
+@property (strong,nonatomic) NSURL *url;
 
 @end

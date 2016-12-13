@@ -20,12 +20,22 @@
 	int _clickedItem;
 }
 
+@property(strong, nonatomic) RSSChannel* channel;
+
 - (void)showError:(NSError*)err;
 
 @end
 
 
 @implementation RSSTableViewController
+
+-(void)setUrl:(NSURL *)url{
+	_url = url;
+	_rssSource = [RSSCachedSource sourceWithURL:url];
+	_rssSource.delegate = self;
+	if(self.viewLoaded)
+		[_rssSource refresh];
+}
 
 -(void)setChannel:(RSSChannel *)channel{
 	_channel = channel;
@@ -43,8 +53,6 @@
 	_refreshButtonBarItem = self.navigationItem.rightBarButtonItem;
 
 	_clickedItem = -1;
-	_rssSource = [RSSCachedSource sourceWithURL:[NSURL URLWithString:@"http://news.yandex.ru/hardware.rss"]];
-	_rssSource.delegate = self;
 	[_rssSource refresh];
 }
 
