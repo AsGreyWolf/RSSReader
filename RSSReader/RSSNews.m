@@ -44,10 +44,13 @@
 			NSLog(@"%@",dbError);
 			abort();
 		}
-		if(![[NSManagedObjectContext mainContext] save:&dbError]){
-			NSLog(@"%@",dbError);
-			abort();
-		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			NSError *dbError;
+			if(![[NSManagedObjectContext mainContext] save:&dbError]){
+				NSLog(@"%@",dbError);
+				abort();
+			}
+		});
 	});
 }
 -(bool)read{

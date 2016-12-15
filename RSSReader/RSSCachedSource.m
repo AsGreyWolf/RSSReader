@@ -27,29 +27,34 @@
 }
 
 - (void)RSSSource:(RSSSource*)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
-	NSManagedObjectContext * context = [NSManagedObjectContext contextWithSharedContext];
-	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSChannelModel"];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"url like %@",[rssChannel.url absoluteString]];
-	NSError *dbError;
-	NSArray <RSSChannelModel*> *dbResult = [context executeFetchRequest:fetchRequest
-																  error:&dbError];
-	if(dbError!=nil){
-		NSLog(@"%@",dbError);
-		abort();
-	}
-	for(RSSChannelModel *dbChannel in dbResult) {
-		[context deleteObject:dbChannel];
-	}
-	RSSChannelModel *dbChannel = [NSEntityDescription insertNewObjectForEntityForName:@"RSSChannelModel"
-															   inManagedObjectContext:context];
-	[rssChannel writeModel:dbChannel];
-	if(![context save:&dbError]){
-		NSLog(@"%@",dbError);
-		abort();
-	}
-	if(![[NSManagedObjectContext mainContext] save:&dbError]){
-		NSLog(@"%@",dbError);
-		abort();
+	if(RSSSource == _urlSource){
+		NSManagedObjectContext * context = [NSManagedObjectContext contextWithSharedContext];
+		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSChannelModel"];
+		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"url like %@",[rssChannel.url absoluteString]];
+		NSError *dbError;
+		NSArray <RSSChannelModel*> *dbResult = [context executeFetchRequest:fetchRequest
+																	  error:&dbError];
+		if(dbError!=nil){
+			NSLog(@"%@",dbError);
+			abort();
+		}
+		for(RSSChannelModel *dbChannel in dbResult) {
+			[context deleteObject:dbChannel];
+		}
+		RSSChannelModel *dbChannel = [NSEntityDescription insertNewObjectForEntityForName:@"RSSChannelModel"
+																   inManagedObjectContext:context];
+		[rssChannel writeModel:dbChannel];
+		if(![context save:&dbError]){
+			NSLog(@"%@",dbError);
+			abort();
+		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			NSError *dbError;
+			if(![[NSManagedObjectContext mainContext] save:&dbError]){
+				NSLog(@"%@",dbError);
+				abort();
+			}
+		});
 	}
 	[self.delegate RSSSource:self
 		 didFinishRefreshing:rssChannel];

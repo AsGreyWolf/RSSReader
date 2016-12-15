@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h32-br-fKK" id="I5u-72-2ts">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -45,7 +45,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsN-Zo-OYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="944.79999999999995" y="691.304347826087"/>
+            <point key="canvasLocation" x="980" y="690"/>
         </scene>
         <!--News-->
         <scene sceneID="0Aa-ud-ANk">
@@ -111,11 +111,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7wq-Zm-ZR7" id="hHK-aU-XOK">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jgI-sD-A8W">
-                                            <rect key="frame" x="15" y="0.0" width="325" height="44"/>
+                                            <rect key="frame" x="15" y="0.0" width="325" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                             <nil key="textColor"/>
@@ -131,7 +131,13 @@
                             <outlet property="delegate" destination="V73-M4-0Bk" id="oLk-9w-lNa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="RSSReader" id="8os-bE-9FL"/>
+                    <navigationItem key="navigationItem" title="RSSReader" id="8os-bE-9FL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ffE-b9-WdK">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="V73-M4-0Bk" id="UAr-pH-K1c"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="adm-SE-XC1" kind="show" identifier="RSSChannelDetailSegue" id="Cnx-F0-dVa"/>
                     </connections>

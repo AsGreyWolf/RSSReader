@@ -10,4 +10,6 @@
 
 @interface RSSChannelTableViewController : UITableViewController
 
+- (void)update;
+
 @end

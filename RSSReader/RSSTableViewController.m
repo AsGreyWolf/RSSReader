@@ -10,6 +10,7 @@
 #import "RSSNews.h"
 #import "RSSTableViewCell.h"
 #import "RSSDetailViewController.h"
+#import "RSSChannelTableViewController.h"
 #import "RSSCachedSource.h"
 
 @interface RSSTableViewController () <RSSSourceDelegate>{
@@ -20,8 +21,6 @@
 	int _clickedItem;
 }
 
-@property(strong, nonatomic) RSSChannel* channel;
-
 - (void)showError:(NSError*)err;
 
 @end
@@ -29,17 +28,14 @@
 
 @implementation RSSTableViewController
 
--(void)setUrl:(NSURL *)url{
-	_url = url;
-	_rssSource = [RSSCachedSource sourceWithURL:url];
+-(void)setChannel:(RSSChannel *)channel{
+	_rssSource = [RSSCachedSource sourceWithURL:channel.url];
 	_rssSource.delegate = self;
 	if(self.viewLoaded)
 		[_rssSource refresh];
-}
 
--(void)setChannel:(RSSChannel *)channel{
 	_channel = channel;
-	self.title = channel.name;
+	self.title = _channel.name;
 	[self.tableView reloadData];
 }
 
@@ -83,6 +79,12 @@
 	[self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void) viewWillDisappear:(BOOL)animated{
+	NSInteger index = [self.navigationController.viewControllers indexOfObject:self.navigationController.topViewController];
+	RSSChannelTableViewController *parent = (RSSChannelTableViewController *)[self.navigationController.viewControllers objectAtIndex:index];
+	[parent update];
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -122,7 +124,9 @@
 - (void)RSSSource:(RSSSource*)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
-		self.channel = rssChannel;
+		_channel = rssChannel;
+		self.title = _channel.name;
+		[self.tableView reloadData];
 	});
 }
 
