@@ -130,49 +130,27 @@
 	cell.textLabel.text = [_channels objectAtIndex:indexPath.row].name;
 	if([[_unreadCount objectAtIndex:indexPath.row] integerValue]>0){
 		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
+		cell.textLabel.text = [NSString stringWithFormat:@"(%@)%@",[_unreadCount objectAtIndex:indexPath.row],cell.textLabel.text];
 	}
 	else{
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
-	UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-																						   action:@selector(cellTapped:)];
-	tapGestureRecognizer.numberOfTapsRequired = 1;
-	tapGestureRecognizer.numberOfTouchesRequired = 1;
-	cell.tag = indexPath.row;
-	[cell addGestureRecognizer:tapGestureRecognizer];
-
-	UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-																					   action:@selector(cellLongPressed:)];
-	lpgr.minimumPressDuration = 0.5;
-	[cell addGestureRecognizer:lpgr];
-	cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
-- (void)cellLongPressed:(UILongPressGestureRecognizer *)recognizer
-{
-	if (recognizer.state == UIGestureRecognizerStateBegan) {
-		NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:[recognizer locationInView:self.tableView]];
-		UIAlertController *dialogController = [UIAlertController alertControllerWithTitle:nil
-																				  message:nil
-																		   preferredStyle:UIAlertControllerStyleActionSheet];
-		[dialogController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Delete", nil)
-															 style:UIAlertActionStyleDestructive
-														   handler:^(UIAlertAction *sender){
-															   [self removeUrl:[_channels objectAtIndex:indexPath.row].url];
-														   }]];
-		[dialogController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil)
-															 style:UIAlertActionStyleCancel
-														   handler:nil]];
-		[self presentViewController:dialogController
-						   animated:true
-						 completion:nil];
+- (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+	return true;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+											forRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		[self removeUrl:[_channels objectAtIndex:indexPath.row].url];
+		//[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 	}
 }
 
-- (void)cellTapped:(UITapGestureRecognizer*)recognizer
-{
-	NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:[recognizer locationInView:self.tableView]];
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 	_clickedItem = indexPath.row;
 	[self performSegueWithIdentifier:@"RSSChannelDetailSegue" sender:self.tableView];
 }
