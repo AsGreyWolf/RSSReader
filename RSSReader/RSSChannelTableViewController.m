@@ -11,6 +11,7 @@
 #import "RSSNewsModel+CoreDataClass.h"
 #import "NSManagedObjectContext+contextWithSqlite.h"
 #import "RSSTableViewController.h"
+#import "RSSChannelTableViewCell.h"
 #import "RSSCachedSource.h"
 
 @interface RSSChannelTableViewController () <RSSSourceDelegate>{
@@ -109,6 +110,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	UINib *cellNib = [UINib nibWithNibName:@"RSSChannelTableViewCell" bundle:nil];
+	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"ChannelCell"];
 	_clickedItem = -1;
 	_processingSources = [NSMutableSet new];
 	[self update];
@@ -124,18 +127,10 @@
     return _channels.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChannelCell" forIndexPath:indexPath];
-	cell.textLabel.text = [_channels objectAtIndex:indexPath.row].name;
-	if([[_unreadCount objectAtIndex:indexPath.row] integerValue]>0){
-		cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-		cell.textLabel.text = [NSString stringWithFormat:@"(%@)%@",[_unreadCount objectAtIndex:indexPath.row],cell.textLabel.text];
-	}
-	else{
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
-    return cell;
+    RSSChannelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ChannelCell" forIndexPath:indexPath];
+	cell.channel = [_channels objectAtIndex:indexPath.row];
+	return cell;
 }
 
 - (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
