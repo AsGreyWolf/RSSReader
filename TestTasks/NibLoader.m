@@ -12,15 +12,11 @@
 @implementation NSObject (NibLoader)
 
 + (id) loadType:(Class)type withNibName:(NSString *)name{
-	@try {
-		NSArray* elements = [[NSBundle mainBundle] loadNibNamed:name owner:self options:nil];
-		if (!elements) return nil;
-		for (id obj in elements){
-			if ([obj isKindOfClass:type])
-				return obj;
-		}
-	} @catch (NSException *exception) {
-		NSLog(@"%@", exception);
+	NSArray* elements = [[NSBundle mainBundle] loadNibNamed:name owner:self options:nil];
+	if (!elements) return nil;
+	for (id obj in elements){
+		if ([obj isKindOfClass:type])
+			return obj;
 	}
 	return nil;
 };

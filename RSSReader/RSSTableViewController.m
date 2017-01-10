@@ -83,6 +83,7 @@
 	NSInteger index = [self.navigationController.viewControllers indexOfObject:self.navigationController.topViewController];
 	RSSChannelTableViewController *parent = (RSSChannelTableViewController *)[self.navigationController.viewControllers objectAtIndex:index];
 	[parent update];
+	[super viewWillDisappear:animated];
 }
 
 #pragma mark - Table view data source

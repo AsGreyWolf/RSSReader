@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" restorationIdentifier="title" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vh-W4-BGE">
@@ -62,8 +62,8 @@
             <connections>
                 <outlet property="date" destination="ohc-qG-QXg" id="Oro-SG-9C2"/>
                 <outlet property="text" destination="aW5-jc-eho" id="Fku-HP-kWD"/>
-                <outlet property="title" destination="9Vh-W4-BGE" id="TUE-GA-PP4"/>
-                <outlet property="title_unread" destination="3Yx-a8-ee3" id="LUX-mk-VxF"/>
+                <outlet property="title" destination="9Vh-W4-BGE" id="n6O-Ek-8xF"/>
+                <outlet property="titleUnread" destination="3Yx-a8-ee3" id="hUX-xZ-pj7"/>
             </connections>
         </tableViewCell>
     </objects>

@@ -34,22 +34,15 @@
 		NSError *dbError;
 		NSArray <RSSNewsModel*> *dbResult = [context executeFetchRequest:fetchRequest
 																   error:&dbError];
-		if(dbError!=nil){
-			NSLog(@"%@",dbError);
-			abort();
-		}
+		NSAssert(dbError==nil, @"Database selection failed");
 		for(RSSNewsModel *dbNews in dbResult)
 			dbNews.read = read;
-		if(![context save:&dbError]){
-			NSLog(@"%@",dbError);
-			abort();
-		}
+		[context save:&dbError];
+		NSAssert(dbError==nil, @"Database save failed");
 		dispatch_async(dispatch_get_main_queue(), ^{
 			NSError *dbError;
-			if(![[NSManagedObjectContext mainContext] save:&dbError]){
-				NSLog(@"%@",dbError);
-				abort();
-			}
+			[[NSManagedObjectContext mainContext] save:&dbError];
+			NSAssert(dbError==nil, @"Database save failed");
 		});
 	});
 }
@@ -74,10 +67,7 @@
 		NSError *dbError;
 		NSArray <RSSNewsModel*> *dbResult = [context executeFetchRequest:fetchRequest
 																   error:&dbError];
-		if(dbError!=nil){
-			NSLog(@"%@",dbError);
-			abort();
-		}
+		NSAssert(dbError==nil, @"Database selection failed");
 		for(RSSNewsModel *dbNews in dbResult) {
 			_read = dbNews.read;
 			break;

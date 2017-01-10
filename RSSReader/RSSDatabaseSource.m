@@ -28,10 +28,7 @@
 		NSError *dbError;
 		NSArray <RSSChannelModel*> *dbResult = [context executeFetchRequest:fetchRequest
 																	  error:&dbError];
-		if(dbError!=nil){
-			NSLog(@"%@",dbError);
-			abort();
-		}
+		NSAssert(dbError==nil, @"Database selection failed");
 		if(dbResult.count>0) {
 			RSSChannel *channel = [RSSChannel channelWithModel:[dbResult objectAtIndex:0]];
 			[self.delegate RSSSource:self
