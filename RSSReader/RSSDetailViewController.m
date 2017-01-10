@@ -48,13 +48,22 @@
 	if(!self.news.url){
 		self.linkButton.enabled = false;
 	}
-	[self.text setContentOffset:CGPointZero animated:NO];
 	self.news.read = true;
+	CGPoint point = self.text.contentOffset;
+	point.y = -64;  // FIXME: do smth less stupid
+	[self.text setContentOffset:point animated:NO];
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	[super viewDidLoad];
 	[self update];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	CGPoint point = self.text.contentOffset;
+	point.y = -64;  // FIXME: do smth less stupid
+	[self.text setContentOffset:point animated:animated];  // FIXME: scrolls after show
 }
 
 - (IBAction)linkButtonTapped:(id)sender {

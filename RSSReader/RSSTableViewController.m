@@ -81,8 +81,10 @@
 
 - (void) viewWillDisappear:(BOOL)animated{
 	NSInteger index = [self.navigationController.viewControllers indexOfObject:self.navigationController.topViewController];
-	RSSChannelTableViewController *parent = (RSSChannelTableViewController *)[self.navigationController.viewControllers objectAtIndex:index];
-	[parent update];
+	if([[self.navigationController.viewControllers objectAtIndex:index] isKindOfClass:[RSSChannelTableViewController class]]){
+		RSSChannelTableViewController *parent = (RSSChannelTableViewController *)[self.navigationController.viewControllers objectAtIndex:index];
+		[parent update];
+	}
 	[super viewWillDisappear:animated];
 }
 
@@ -97,7 +99,8 @@
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-	RSSTableViewCell *cell = (RSSTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"NewsCell" forIndexPath:indexPath];
+	RSSTableViewCell *cell = (RSSTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"NewsCell"
+																				forIndexPath:indexPath];
 	RSSNews *item = [self.channel.news objectAtIndex:indexPath.row];
 	cell.data = item;
 	return cell;
@@ -116,7 +119,9 @@
 
 - (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[self.tableView setContentOffset:CGPointZero animated:NO];
+		CGPoint p = self.tableView.contentOffset;
+		p.y = -64; // FIXME: do smth less stupid
+		[self.tableView setContentOffset:p animated:NO];
 		self.navigationItem.rightBarButtonItem = _spinnerBarItem;
 		[_spinner startAnimating];
 	});
