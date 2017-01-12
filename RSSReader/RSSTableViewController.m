@@ -49,6 +49,10 @@
 	_refreshButtonBarItem = self.navigationItem.rightBarButtonItem;
 
 	_clickedItem = -1;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+	[super viewWillAppear:animated];
 	[_rssSource refresh];
 }
 
@@ -119,9 +123,6 @@
 
 - (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		CGPoint p = self.tableView.contentOffset;
-		p.y = -64; // FIXME: do smth less stupid
-		[self.tableView setContentOffset:p animated:NO];
 		self.navigationItem.rightBarButtonItem = _spinnerBarItem;
 		[_spinner startAnimating];
 	});
@@ -133,6 +134,9 @@
 		_channel = rssChannel;
 		self.title = _channel.name;
 		[self.tableView reloadData];
+		CGPoint p = self.tableView.contentOffset;
+		p.y = -64; // FIXME: do smth less stupid
+		[self.tableView setContentOffset:p animated:NO];
 	});
 }
 
@@ -140,6 +144,9 @@
 	dispatch_async(dispatch_get_main_queue(), ^{
 		self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
 		[self showError:err];
+		CGPoint p = self.tableView.contentOffset;
+		p.y = -64; // FIXME: do smth less stupid
+		[self.tableView setContentOffset:p animated:NO];
 	});
 }
 

@@ -8,10 +8,10 @@
 
 #import "RSSDetailViewController.h"
 
-@interface RSSDetailViewController ()
+@interface RSSDetailViewController () <UIWebViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextView *text;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *linkButton;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -38,36 +38,43 @@
 							 self.news.title,
 							 date,
 							 self.news.text];
-	self.text.attributedText = [[NSAttributedString alloc]
-								initWithData: [text dataUsingEncoding:NSUnicodeStringEncoding]
-								options: @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType }
-								documentAttributes: nil
-								error: nil
-								];
+	[self.webView loadHTMLString:text baseURL:nil];
 	self.title = self.news.title;
 	if(!self.news.url){
 		self.linkButton.enabled = false;
 	}
 	self.news.read = true;
-	CGPoint point = self.text.contentOffset;
-	point.y = -64;  // FIXME: do smth less stupid
-	[self.text setContentOffset:point animated:NO];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
 	[super viewDidLoad];
-	[self update];
+	self.webView.dataDetectorTypes = UIDataDetectorTypeAll;
+	self.webView.delegate = self;
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-	[super viewDidAppear:animated];
-	CGPoint point = self.text.contentOffset;
-	point.y = -64;  // FIXME: do smth less stupid
-	[self.text setContentOffset:point animated:animated];  // FIXME: scrolls after show
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self update];
 }
 
 - (IBAction)linkButtonTapped:(id)sender {
 	[[UIApplication sharedApplication] openURL:self.news.url];
+}
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+	if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+		[[UIApplication sharedApplication] openURL:[request URL]];
+		return false;
+	}
+	return true;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+	[webView stringByEvaluatingJavaScriptFromString:
+	 @"var images = document.getElementsByTagName(\"img\"); \
+	 for(var i=0; i<images.length;i++) \
+		images[i].style.maxWidth = \"100%\";"
+	 ];
 }
 
 @end
