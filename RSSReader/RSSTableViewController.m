@@ -64,12 +64,13 @@
 	if([[segue identifier] hasPrefix:@"RSSNewsDetailSegue"]){
 		RSSDetailViewController *controller = [segue destinationViewController];
 		controller.news = [self.channel.news objectAtIndex:_clickedItem];
-		_clickedItem = -1;
 	}
 }
 
 - (IBAction)unwindFromDetail:(UIStoryboardSegue*)sender{
-	[self.tableView reloadData];
+	[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_clickedItem
+																inSection:0]]
+						  withRowAnimation:true];
 }
 
 - (void)showError:(NSError *)err{

@@ -6,7 +6,7 @@
 //  Copyright © 2016 User. All rights reserved.
 //
 
-#import "NibLoader.h"
+#import "NSObject+NibLoader.h"
 #import <UIKit/UIKit.h>
 
 @implementation NSObject (NibLoader)

@@ -60,8 +60,8 @@
 	result.text = text;
 	result.url = url;
 	result.guid = guid;
-	dispatch_async(dispatch_get_main_queue(), ^{
-		NSManagedObjectContext *context = [NSManagedObjectContext mainContext];
+//	dispatch_async(dispatch_get_main_queue(), ^{
+		NSManagedObjectContext *context = [NSManagedObjectContext contextWithSharedContext];
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSNewsModel"];
 		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"guid like %@",self.guid];
 		NSError *dbError;
@@ -72,7 +72,7 @@
 			_read = dbNews.read;
 			break;
 		}
-	});
+//	});
 	return result;
 }
 -(void)writeModel:(RSSNewsModel * _Nonnull)model

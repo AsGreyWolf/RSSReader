@@ -16,7 +16,6 @@
 
 @interface RSSChannelTableViewController () <RSSSourceDelegate>{
 	NSArray <RSSChannel*> *_channels;
-	NSArray <NSNumber*> *_unreadCount;
 	int _clickedItem;
 	NSMutableSet <RSSSource*> *_processingSources;
 }
@@ -84,16 +83,13 @@
 	dbChannels = [dbChannels sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name"
 																						 ascending:true]]];
 	NSMutableArray <RSSChannel*> *channels = [NSMutableArray new];
-	NSMutableArray <NSNumber*> *unreadCount = [NSMutableArray new];
 	for(RSSChannelModel *dbChannel in dbChannels){
 		int count = 0;
 		for(RSSNewsModel *dbNews in dbChannel.news){
 			if(!dbNews.read) count++;
 		}
-		[unreadCount addObject:[NSNumber numberWithInt:count]];
 		[channels addObject:[RSSChannel channelWithModel:dbChannel]];
 	}
-	_unreadCount = unreadCount;
 	_channels = channels;
 	[self.tableView reloadData];
 }

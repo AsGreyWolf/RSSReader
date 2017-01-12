@@ -12,7 +12,7 @@
 		CE2D391F1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */; };
 		CE2D392E1DFAF82800E89973 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE2D392C1DFAF82800E89973 /* Model.xcdatamodeld */; };
 		CE366E1F1DEC53340080B9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E1E1DEC53340080B9CA /* main.m */; };
-		CE366E251DEC53A70080B9CA /* NibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E241DEC53A70080B9CA /* NibLoader.m */; };
+		CE366E251DEC53A70080B9CA /* NSObject+NibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = CE366E241DEC53A70080B9CA /* NSObject+NibLoader.m */; };
 		CE97626F1DE300CE0086196D /* RSSNews.m in Sources */ = {isa = PBXBuildFile; fileRef = CE97626E1DE300CE0086196D /* RSSNews.m */; };
 		CE97627B1DE311220086196D /* RSSTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9762791DE311220086196D /* RSSTableViewCell.m */; };
 		CE97627C1DE311220086196D /* RSSTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE97627A1DE311220086196D /* RSSTableViewCell.xib */; };
@@ -44,8 +44,8 @@
 		CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+contextWithSqlite.m"; sourceTree = "<group>"; };
 		CE2D392D1DFAF82800E89973 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		CE366E1E1DEC53340080B9CA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TestTasks/main.m; sourceTree = SOURCE_ROOT; };
-		CE366E231DEC53A70080B9CA /* NibLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NibLoader.h; path = TestTasks/NibLoader.h; sourceTree = "<group>"; };
-		CE366E241DEC53A70080B9CA /* NibLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NibLoader.m; path = TestTasks/NibLoader.m; sourceTree = "<group>"; };
+		CE366E231DEC53A70080B9CA /* NSObject+NibLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+NibLoader.h"; path = "TestTasks/NSObject+NibLoader.h"; sourceTree = "<group>"; };
+		CE366E241DEC53A70080B9CA /* NSObject+NibLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+NibLoader.m"; path = "TestTasks/NSObject+NibLoader.m"; sourceTree = "<group>"; };
 		CE366E281DEC63B50080B9CA /* RSSSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSSource.h; sourceTree = "<group>"; };
 		CE366E2B1DEC65A40080B9CA /* RSSSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSSourceDelegate.h; sourceTree = "<group>"; };
 		CE4427BA1DE702A300F919B5 /* RSSLoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSLoaderDelegate.h; sourceTree = "<group>"; };
@@ -100,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				CE366E1E1DEC53340080B9CA /* main.m */,
-				CE366E231DEC53A70080B9CA /* NibLoader.h */,
-				CE366E241DEC53A70080B9CA /* NibLoader.m */,
+				CE366E231DEC53A70080B9CA /* NSObject+NibLoader.h */,
+				CE366E241DEC53A70080B9CA /* NSObject+NibLoader.m */,
 			);
 			name = TestTasks;
 			sourceTree = "<group>";
@@ -335,7 +335,7 @@
 				CE2D392E1DFAF82800E89973 /* Model.xcdatamodeld in Sources */,
 				CEEC5C821DF97ED800384C0A /* RSSCachedSource.m in Sources */,
 				CE366E1F1DEC53340080B9CA /* main.m in Sources */,
-				CE366E251DEC53A70080B9CA /* NibLoader.m in Sources */,
+				CE366E251DEC53A70080B9CA /* NSObject+NibLoader.m in Sources */,
 				CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

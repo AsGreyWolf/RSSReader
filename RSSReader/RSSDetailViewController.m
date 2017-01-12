@@ -70,11 +70,11 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
-	[webView stringByEvaluatingJavaScriptFromString:
-	 @"var images = document.getElementsByTagName(\"img\"); \
-	 for(var i=0; i<images.length;i++) \
-		images[i].style.maxWidth = \"100%\";"
-	 ];
+	NSString *cssString = @"img { max-width: 100%; } h1 { font-size: 150%; }";
+	NSString *javascriptWithCSSString = [NSString stringWithFormat:@"var style = document.createElement('style'); \
+										 style.innerHTML = '%@'; \
+										 document.head.appendChild(style)", cssString];
+	[webView stringByEvaluatingJavaScriptFromString:javascriptWithCSSString];
 }
 
 @end
