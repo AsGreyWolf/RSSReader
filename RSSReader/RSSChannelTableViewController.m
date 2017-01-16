@@ -18,6 +18,7 @@
 	NSArray <RSSChannel*> *_channels;
 	int _clickedItem;
 	NSMutableSet <RSSSource*> *_processingSources;
+	UIRefreshControl *_refreshControl;
 }
 
 - (void)addUrl:(NSURL*)url;
@@ -74,6 +75,7 @@
 }
 
 - (void)update{
+	[_refreshControl beginRefreshing];
 	NSManagedObjectContext *context = [NSManagedObjectContext mainContext];
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSChannelModel"];
 	NSError *dbError;
@@ -91,6 +93,7 @@
 		[channels addObject:[RSSChannel channelWithModel:dbChannel]];
 	}
 	_channels = channels;
+	[_refreshControl endRefreshing];
 	[self.tableView reloadData];
 }
 
@@ -100,6 +103,9 @@
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"ChannelCell"];
 	_clickedItem = -1;
 	_processingSources = [NSMutableSet new];
+	_refreshControl = [[UIRefreshControl alloc]init];
+	[self.tableView addSubview:_refreshControl];
+	[_refreshControl addTarget:self action:@selector(update) forControlEvents:UIControlEventValueChanged];
 	[self update];
 }
 

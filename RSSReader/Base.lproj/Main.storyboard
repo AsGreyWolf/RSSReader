@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h32-br-fKK" id="I5u-72-2ts">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
@@ -35,13 +35,7 @@
                             <outlet property="delegate" destination="adm-SE-XC1" id="R7C-la-iur"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Channel" id="Lab-NP-xeP">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="ssr-B8-Lzf">
-                            <connections>
-                                <action selector="refreshButtonTapped:" destination="adm-SE-XC1" id="ggQ-Pu-blD"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Channel" id="Lab-NP-xeP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsN-Zo-OYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

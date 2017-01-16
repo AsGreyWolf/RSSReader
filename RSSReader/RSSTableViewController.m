@@ -14,11 +14,9 @@
 #import "RSSCachedSource.h"
 
 @interface RSSTableViewController () <RSSSourceDelegate>{
-	UIBarButtonItem *_refreshButtonBarItem;
-	UIBarButtonItem *_spinnerBarItem;
-	UIActivityIndicatorView *_spinner;
 	RSSSource *_rssSource;
 	int _clickedItem;
+	UIRefreshControl *_refreshControl;
 }
 
 - (void)showError:(NSError*)err;
@@ -44,19 +42,15 @@
 	UINib *cellNib = [UINib nibWithNibName:@"RSSTableViewCell" bundle:nil];
 	[self.tableView registerNib:cellNib forCellReuseIdentifier:@"NewsCell"];
 
-	_spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-	_spinnerBarItem = [[UIBarButtonItem alloc] initWithCustomView:_spinner];
-	_refreshButtonBarItem = self.navigationItem.rightBarButtonItem;
-
 	_clickedItem = -1;
+
+	_refreshControl = [[UIRefreshControl alloc]init];
+	[self.tableView addSubview:_refreshControl];
+	[_refreshControl addTarget:_rssSource action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
-	[_rssSource refresh];
-}
-
-- (IBAction)refreshButtonTapped:(id)sender {
 	[_rssSource refresh];
 }
 
@@ -124,30 +118,23 @@
 
 - (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		self.navigationItem.rightBarButtonItem = _spinnerBarItem;
-		[_spinner startAnimating];
+		[_refreshControl beginRefreshing];
 	});
 }
 
 - (void)RSSSource:(RSSSource*)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
 		_channel = rssChannel;
 		self.title = _channel.name;
+		[_refreshControl endRefreshing];
 		[self.tableView reloadData];
-		CGPoint p = self.tableView.contentOffset;
-		p.y = -64; // FIXME: do smth less stupid
-		[self.tableView setContentOffset:p animated:NO];
 	});
 }
 
 - (void)RSSSource:(RSSSource*)RSSSource didFailWithError:(NSError *)err{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		self.navigationItem.rightBarButtonItem = _refreshButtonBarItem;
+		[_refreshControl endRefreshing];
 		[self showError:err];
-		CGPoint p = self.tableView.contentOffset;
-		p.y = -64; // FIXME: do smth less stupid
-		[self.tableView setContentOffset:p animated:NO];
 	});
 }
 
