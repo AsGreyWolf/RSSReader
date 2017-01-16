@@ -28,6 +28,7 @@
 		CEBF09701E0D3C9300AC7468 /* RSSChannelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBF096E1E0D3C9300AC7468 /* RSSChannelTableViewCell.m */; };
 		CEBF09711E0D3C9300AC7468 /* RSSChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBF096F1E0D3C9300AC7468 /* RSSChannelTableViewCell.xib */; };
 		CED0F6A21E2CEC3E006F9C57 /* ImagePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0F6A11E2CEC3E006F9C57 /* ImagePool.m */; };
+		CED0F6A81E2CFDAC006F9C57 /* RSSChannelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0F6A71E2CFDAC006F9C57 /* RSSChannelSet.m */; };
 		CEEC5C771DF9653D00384C0A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEC5C761DF9653D00384C0A /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CEEC5C7D1DF97C7200384C0A /* RSSUrlSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */; };
 		CEEC5C7F1DF97E6C00384C0A /* RSSSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEC5C7E1DF97E6C00384C0A /* RSSSource.m */; };
@@ -75,6 +76,9 @@
 		CEBF096F1E0D3C9300AC7468 /* RSSChannelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RSSChannelTableViewCell.xib; sourceTree = "<group>"; };
 		CED0F6A01E2CEC3E006F9C57 /* ImagePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePool.h; sourceTree = "<group>"; };
 		CED0F6A11E2CEC3E006F9C57 /* ImagePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePool.m; sourceTree = "<group>"; };
+		CED0F6A61E2CFDAC006F9C57 /* RSSChannelSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannelSet.h; sourceTree = "<group>"; };
+		CED0F6A71E2CFDAC006F9C57 /* RSSChannelSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannelSet.m; sourceTree = "<group>"; };
+		CED0F6A91E2CFDE8006F9C57 /* RSSChannelSetDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSChannelSetDelegate.h; sourceTree = "<group>"; };
 		CEEC5C761DF9653D00384C0A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CEEC5C7B1DF97C7200384C0A /* RSSUrlSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSUrlSource.h; sourceTree = "<group>"; };
 		CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSUrlSource.m; sourceTree = "<group>"; };
@@ -213,6 +217,9 @@
 				CEE635DC1DFEF9C900E30F5A /* gui */,
 				CED0F6A01E2CEC3E006F9C57 /* ImagePool.h */,
 				CED0F6A11E2CEC3E006F9C57 /* ImagePool.m */,
+				CED0F6A61E2CFDAC006F9C57 /* RSSChannelSet.h */,
+				CED0F6A71E2CFDAC006F9C57 /* RSSChannelSet.m */,
+				CED0F6A91E2CFDE8006F9C57 /* RSSChannelSetDelegate.h */,
 			);
 			name = channelList;
 			sourceTree = "<group>";
@@ -341,6 +348,7 @@
 				CE2D392E1DFAF82800E89973 /* Model.xcdatamodeld in Sources */,
 				CEEC5C821DF97ED800384C0A /* RSSCachedSource.m in Sources */,
 				CE366E1F1DEC53340080B9CA /* main.m in Sources */,
+				CED0F6A81E2CFDAC006F9C57 /* RSSChannelSet.m in Sources */,
 				CE366E251DEC53A70080B9CA /* NSObject+NibLoader.m in Sources */,
 				CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */,
 			);
