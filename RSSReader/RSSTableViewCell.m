@@ -12,7 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *date;
-@property (weak, nonatomic) IBOutlet UILabel *text;
 
 @end
 
@@ -22,7 +21,6 @@
 -(void)setData:(RSSNews *)data{
 	_data = data;
 	self.title.text = data.title;
-	self.text.text = data.text;
 	if(data.date)
 		self.date.text = [NSDateFormatter localizedStringFromDate:data.date
 													dateStyle:NSDateFormatterShortStyle
@@ -40,8 +38,6 @@
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
-	self.title.lineBreakMode = NSLineBreakByTruncatingTail;
-	self.text.lineBreakMode = NSLineBreakByTruncatingTail;
 }
 
 @end

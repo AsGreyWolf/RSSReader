@@ -18,40 +18,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="99"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" restorationIdentifier="title" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vh-W4-BGE">
-                        <rect key="frame" x="8" y="8" width="242.5" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Lorem ipsum dolo sit er lamet, cobnsectetaur cillium" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aW5-jc-eho">
-                        <rect key="frame" x="8" y="37" width="304" height="54.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" restorationIdentifier="title" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vh-W4-BGE">
+                        <rect key="frame" x="8" y="8" width="304" height="60"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="date" text="date time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ohc-qG-QXg">
-                        <rect key="frame" x="258" y="12" width="54" height="15"/>
+                        <rect key="frame" x="8" y="76" width="304" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ohc-qG-QXg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="6dE-hw-tg5"/>
-                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Edh-2L-kN9"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="aW5-jc-eho" secondAttribute="trailing" id="LnY-qV-iZt"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="aW5-jc-eho" secondAttribute="bottom" id="QMR-ws-JaD"/>
-                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="ZYK-hq-uTO"/>
-                    <constraint firstItem="ohc-qG-QXg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="4" id="hWa-yA-caa"/>
-                    <constraint firstItem="aW5-jc-eho" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="txj-CE-2E2"/>
-                    <constraint firstItem="aW5-jc-eho" firstAttribute="top" secondItem="9Vh-W4-BGE" secondAttribute="bottom" constant="8" id="wQi-95-8Ag"/>
-                    <constraint firstItem="ohc-qG-QXg" firstAttribute="leading" secondItem="9Vh-W4-BGE" secondAttribute="trailing" constant="8" id="yVu-HX-3ma"/>
+                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="4gv-CF-dtF"/>
+                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AaJ-1y-fhU"/>
+                    <constraint firstItem="ohc-qG-QXg" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="IUE-y1-2g4"/>
+                    <constraint firstItem="ohc-qG-QXg" firstAttribute="top" secondItem="9Vh-W4-BGE" secondAttribute="bottom" constant="8" id="NAV-0x-GQn"/>
+                    <constraint firstItem="9Vh-W4-BGE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="h98-D6-VXL"/>
+                    <constraint firstItem="ohc-qG-QXg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="mbM-8k-ebZ"/>
+                    <constraint firstItem="ohc-qG-QXg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="y0g-J6-lLf"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="date" destination="ohc-qG-QXg" id="Oro-SG-9C2"/>
-                <outlet property="text" destination="aW5-jc-eho" id="Fku-HP-kWD"/>
                 <outlet property="title" destination="9Vh-W4-BGE" id="n6O-Ek-8xF"/>
             </connections>
         </tableViewCell>
