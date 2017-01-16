@@ -7,6 +7,7 @@
 //
 
 #import "RSSChannelTableViewCell.h"
+#import "ImagePool.h"
 
 @interface RSSChannelTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
@@ -28,6 +29,9 @@
 	}
 	else{
 		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	}
+	if(channel.image != nil){
+		self.image.image = [ImagePool imageWithUrl:channel.image];
 	}
 }
 

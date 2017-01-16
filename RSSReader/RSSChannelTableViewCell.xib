@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,21 +15,32 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-1R-a7c">
-                        <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-1R-a7c">
+                        <rect key="frame" x="8" y="8" width="45" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="M1Y-J0-JmS"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3id-V8-wlt">
-                        <rect key="frame" x="51" y="11" width="261" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3id-V8-wlt">
+                        <rect key="frame" x="61" y="8" width="251" height="27.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="3id-V8-wlt" secondAttribute="bottom" id="0ci-xZ-9Vm"/>
+                    <constraint firstItem="PtZ-1R-a7c" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="35J-fw-39o"/>
+                    <constraint firstItem="3id-V8-wlt" firstAttribute="leading" secondItem="PtZ-1R-a7c" secondAttribute="trailing" constant="8" id="70F-rO-yey"/>
+                    <constraint firstItem="PtZ-1R-a7c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ebb-mm-PCv"/>
+                    <constraint firstItem="PtZ-1R-a7c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Kmu-BN-TFQ"/>
+                    <constraint firstItem="3id-V8-wlt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WZl-jT-uMP"/>
+                    <constraint firstItem="PtZ-1R-a7c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lEv-kz-bWH"/>
+                    <constraint firstItem="3id-V8-wlt" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="oph-fa-sLX"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="image" destination="PtZ-1R-a7c" id="pWh-2B-Oeg"/>

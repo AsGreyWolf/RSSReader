@@ -13,6 +13,8 @@
 	NSString * _Nonnull _description;
 	NSDate * _Nullable _date;
 	NSURL * _Nullable _url;
+	NSURL * _Nullable _imageUrlBuffer;
+	NSURL * _Nullable _image;
 	NSString * _Nonnull _guid;
 	NSMutableArray<RSSNews *>* _Nullable _newsList;
 	NSString * _Nonnull _channelName;
@@ -36,6 +38,8 @@
 	_newsList = [NSMutableArray  new];
 	_stack = [NSMutableArray new];
 	_dateFormatter = [[NSDateFormatter alloc] init];
+	_image = nil;
+	_imageUrlBuffer = nil;
 	[_dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en-US"]];
 	NSXMLParser* parser = [[NSXMLParser alloc] initWithData:data];
 	parser.delegate = self;
@@ -43,6 +47,7 @@
 	if(!_newsList) return nil;
 	return [RSSChannel channelWithName:_channelName
 							   withUrl:url
+							 withImage:_image
 						  withNewsList:_newsList];
 }
 
@@ -78,6 +83,10 @@
 		}
 	} else if ([elementName isEqualToString:@"link"]) {
 		_url = [NSURL URLWithString:str];
+	} else if ([elementName isEqualToString:@"url"]) {
+		_imageUrlBuffer = [NSURL URLWithString:str];
+	} else if ([elementName isEqualToString:@"image"]) {
+		_image = _imageUrlBuffer;
 	} else if ([elementName isEqualToString:@"guid"]) {
 		_guid = str;
 	}
