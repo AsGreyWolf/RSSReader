@@ -11,6 +11,7 @@
 
 @interface RSSChannelTableViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UILabel *counter;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @end
 
@@ -23,21 +24,11 @@
 	for(RSSNews *news in channel.news){
 		if(!news.read) unread++;
 	}
-	if(unread>0){
-		self.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
-		self.title.text = [NSString stringWithFormat:@"(%d)%@", unread, self.title.text];
-	}
-	else{
-		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
+	self.counter.hidden = unread == 0;
+	self.counter.text = [NSString stringWithFormat:@"%d", unread];
 	if(channel.image != nil){
 		self.image.image = [ImagePool imageWithUrl:channel.image];
 	}
-}
-
-- (void)awakeFromNib {
-	[super awakeFromNib];
-	self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 @end

@@ -11,14 +11,12 @@
 #import "RSSTableViewController.h"
 #import "RSSChannelTableViewCell.h"
 #import "RSSChannelSet.h"
+#import "UIViewController+showError.h"
 
 @interface RSSChannelTableViewController () <RSSChannelSetDelegate>{
 	int _clickedItem;
-	UIRefreshControl *_refreshControl;
 	RSSChannelSet *_channelSet;
 }
-
-- (void)showError:(NSError *)err;
 
 @end
 
@@ -27,16 +25,6 @@
 
 - (void) update{
 	[_channelSet refresh];
-}
-
-- (void)showError:(NSError *)err{
-	UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil)
-																	message:NSLocalizedString(@"Can not load RSS", nil)
-															 preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", nil)
-											   style:UIAlertActionStyleDestructive
-											 handler:nil]];
-	[self presentViewController:alert animated:true completion:nil];
 }
 
 - (void)viewDidLoad {
@@ -48,9 +36,8 @@
 	_channelSet = [RSSChannelSet new];
 	_channelSet.delegate = self;
 
-	_refreshControl = [[UIRefreshControl alloc]init];
-	[self.tableView addSubview:_refreshControl];
-	[_refreshControl addTarget:self action:@selector(update) forControlEvents:UIControlEventValueChanged];
+	self.refreshControl = [UIRefreshControl new];
+	[self.refreshControl addTarget:self action:@selector(update) forControlEvents:UIControlEventValueChanged];
 
 	[self update];
 }
@@ -124,20 +111,20 @@
 
 - (void)RSSChannelSet:(RSSChannelSet*)RSSChannelSet didStartRefreshing:(NSArray<RSSChannel*> *)rssChannel{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[_refreshControl beginRefreshing];
+		[self.refreshControl beginRefreshing];
 	});
 
 }
 - (void)RSSChannelSet:(RSSChannelSet*)RSSChannelSet didFinishRefreshing:(NSArray<RSSChannel*> *)rssChannel{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[_refreshControl endRefreshing];
+		[self.refreshControl endRefreshing];
 		[self.tableView reloadData];
 	});
 }
 - (void)RSSChannelSet:(RSSChannelSet*)RSSChannelSet didFailWithError:(NSError *)err{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self showError:err];
-		[_refreshControl endRefreshing];
+		[self.refreshControl endRefreshing];
 		[self.tableView reloadData];
 	});
 }

@@ -25,24 +25,37 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3id-V8-wlt">
-                        <rect key="frame" x="61" y="8" width="251" height="27.5"/>
+                        <rect key="frame" x="61" y="8" width="208" height="28"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4j-YV-1TN">
+                        <rect key="frame" x="277" y="8" width="35" height="27.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="8ww-Jy-tbH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="3id-V8-wlt" secondAttribute="bottom" id="0ci-xZ-9Vm"/>
+                    <constraint firstItem="p4j-YV-1TN" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="2wu-n0-maO"/>
                     <constraint firstItem="PtZ-1R-a7c" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="35J-fw-39o"/>
                     <constraint firstItem="3id-V8-wlt" firstAttribute="leading" secondItem="PtZ-1R-a7c" secondAttribute="trailing" constant="8" id="70F-rO-yey"/>
+                    <constraint firstItem="p4j-YV-1TN" firstAttribute="leading" secondItem="3id-V8-wlt" secondAttribute="trailing" constant="8" id="9eA-2v-8vK"/>
                     <constraint firstItem="PtZ-1R-a7c" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ebb-mm-PCv"/>
                     <constraint firstItem="PtZ-1R-a7c" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="Kmu-BN-TFQ"/>
+                    <constraint firstItem="p4j-YV-1TN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="VEU-te-ftS"/>
                     <constraint firstItem="3id-V8-wlt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="WZl-jT-uMP"/>
                     <constraint firstItem="PtZ-1R-a7c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lEv-kz-bWH"/>
-                    <constraint firstItem="3id-V8-wlt" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="oph-fa-sLX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="p4j-YV-1TN" secondAttribute="bottom" id="pQh-uf-SIl"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="counter" destination="p4j-YV-1TN" id="YiC-j3-lZE"/>
                 <outlet property="image" destination="PtZ-1R-a7c" id="pWh-2B-Oeg"/>
                 <outlet property="title" destination="3id-V8-wlt" id="oig-E8-VZF"/>
             </connections>

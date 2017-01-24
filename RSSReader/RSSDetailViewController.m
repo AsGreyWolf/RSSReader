@@ -7,6 +7,7 @@
 //
 
 #import "RSSDetailViewController.h"
+#import "RSSModelUtils.h"
 
 @interface RSSDetailViewController () <UIWebViewDelegate>
 
@@ -34,7 +35,7 @@
 	}else{
 		date = @"";
 	}
-	NSMutableString *text = [NSMutableString stringWithFormat:@"<h1>%@</h1><em>%@</em><p>%@</p>",
+	NSString *text = [NSString stringWithFormat:@"<h1>%@</h1><em>%@</em><p>%@</p>",
 							 self.news.title,
 							 date,
 							 self.news.text];
@@ -43,7 +44,7 @@
 	if(!self.news.url){
 		self.linkButton.enabled = false;
 	}
-	self.news.read = true;
+	[RSSModelUtils setRead:true withNews:self.news];
 }
 
 - (void)viewDidLoad{

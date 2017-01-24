@@ -13,9 +13,9 @@
 
 @property (nonatomic, weak) id <RSSLoaderDelegate> delegate;
 
-- (void)startLoading;
-- (instancetype)initWithURL:(NSURL*)url;
-
 + (instancetype)loaderWithURL:(NSURL*)url;
+
+- (instancetype)initWithURL:(NSURL*)url;
+- (void)startLoading;
 
 @end

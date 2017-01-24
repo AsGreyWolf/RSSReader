@@ -20,6 +20,19 @@
 
 @implementation RSSUrlSource
 
++ (instancetype)sourceWithURL:(NSURL*)url{
+	return [[RSSUrlSource alloc] initWithURL:url];
+}
+
+- (instancetype)initWithURL:(NSURL*)url{
+	self = [self init];
+	self.url = url;
+	_loader = [RSSLoader loaderWithURL:url];
+	_loader.delegate = self;
+	_parser = [RSSParser new];
+	return self;
+}
+
 - (void)RSSLoader:(RSSLoader*)RSSLoader didStartLoading:(NSURL *)url{
 	[self.delegate RSSSource:self didStartRefreshing:url];
 }
@@ -47,19 +60,6 @@
 - (void)refresh{
 	[_loader startLoading];
 	[super refresh];
-}
-
-- (instancetype)initWithURL:(NSURL*)url{
-	self = [self init];
-	self.url = url;
-	_loader = [RSSLoader loaderWithURL:url];
-	_loader.delegate = self;
-	_parser = [RSSParser new];
-	return self;
-}
-
-+ (instancetype)sourceWithURL:(NSURL*)url{
-	return [[RSSUrlSource alloc] initWithURL:url];
 }
 
 @end

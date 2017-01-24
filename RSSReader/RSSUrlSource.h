@@ -11,10 +11,10 @@
 
 @interface RSSUrlSource : RSSSource
 
-@property (strong,nonatomic) NSURL * url;
++ (instancetype)sourceWithURL:(NSURL*)url;
 
 - (instancetype)initWithURL:(NSURL*)url;
 
-+ (instancetype)sourceWithURL:(NSURL*)url;
+@property (strong,nonatomic) NSURL * url;
 
 @end

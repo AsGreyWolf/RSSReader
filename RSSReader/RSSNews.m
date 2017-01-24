@@ -12,43 +12,26 @@
 
 @interface RSSNews()
 
-@property(strong, atomic) NSString* _Nonnull title;
-@property(strong, atomic) NSDate* _Nullable date;
-@property(strong, atomic) NSString* _Nonnull text;
-@property(strong, atomic) NSURL* _Nullable url;
-@property(strong, atomic) NSString* _Nonnull guid;
+@property(strong, nonatomic) NSString* _Nonnull title;
+@property(strong, nonatomic) NSDate* _Nullable date;
+@property(strong, nonatomic) NSString* _Nonnull text;
+@property(strong, nonatomic) NSURL* _Nullable url;
+@property(strong, nonatomic) NSString* _Nonnull guid;
+@property(nonatomic) bool read;
 
 @end
 
 
 @implementation RSSNews
 
-@synthesize read = _read;
++(instancetype _Nonnull)newsWithTitle:(NSString * _Nonnull) title
+							 withDate:(NSDate * _Nullable) date
+							 withText:(NSString * _Nonnull) text
+							  withURL:(NSURL * _Nullable) url
+							 withGUID:(NSString * _Nonnull)guid{
+	return [[RSSNews alloc] initWithTitle:title withDate:date withText:text withURL:url withGUID:guid];
+}
 
--(void)setRead:(bool)read{
-	_read = read;
-	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		NSManagedObjectContext *context = [NSManagedObjectContext contextWithSharedContext];
-		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSNewsModel"];
-		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"guid like %@",self.guid];
-		NSError *dbError;
-		NSArray <RSSNewsModel*> *dbResult = [context executeFetchRequest:fetchRequest
-																   error:&dbError];
-		NSAssert(dbError==nil, @"Database selection failed");
-		for(RSSNewsModel *dbNews in dbResult)
-			dbNews.read = read;
-		[context save:&dbError];
-		NSAssert(dbError==nil, @"Database save failed");
-		dispatch_async(dispatch_get_main_queue(), ^{
-			NSError *dbError;
-			[[NSManagedObjectContext mainContext] save:&dbError];
-			NSAssert(dbError==nil, @"Database save failed");
-		});
-	});
-}
--(bool)read{
-	return _read;
-}
 -(instancetype _Nonnull)initWithTitle:(NSString * _Nonnull) title
 							 withDate:(NSDate * _Nullable) date
 							 withText:(NSString * _Nonnull) text
@@ -60,47 +43,7 @@
 	result.text = text;
 	result.url = url;
 	result.guid = guid;
-//	dispatch_async(dispatch_get_main_queue(), ^{
-		NSManagedObjectContext *context = [NSManagedObjectContext contextWithSharedContext];
-		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSNewsModel"];
-		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"guid like %@",self.guid];
-		NSError *dbError;
-		NSArray <RSSNewsModel*> *dbResult = [context executeFetchRequest:fetchRequest
-																   error:&dbError];
-		NSAssert(dbError==nil, @"Database selection failed");
-		for(RSSNewsModel *dbNews in dbResult) {
-			_read = dbNews.read;
-			break;
-		}
-//	});
 	return result;
-}
--(void)writeModel:(RSSNewsModel * _Nonnull)model
-	  withChannel:(RSSChannelModel * _Nonnull)channel{
-	model.title = self.title;
-	model.date = self.date;
-	model.text = self.text;
-	model.url = [self.url absoluteString];
-	model.guid = self.guid;
-	model.read = self.read;
-	model.channel = channel;
-}
-
-
-+(instancetype _Nonnull)newsWithModel:(RSSNewsModel * _Nonnull)model{
-	RSSNews *result = [RSSNews newsWithTitle:model.title
-									withDate:model.date
-									withText:model.text
-									 withURL:[NSURL URLWithString:model.url]
-									withGUID:model.guid];
-	return result;
-}
-+(instancetype _Nonnull)newsWithTitle:(NSString * _Nonnull) title
-							 withDate:(NSDate * _Nullable) date
-							 withText:(NSString * _Nonnull) text
-							  withURL:(NSURL * _Nullable) url
-							 withGUID:(NSString * _Nonnull)guid{
-	return [[RSSNews alloc] initWithTitle:title withDate:date withText:text withURL:url withGUID:guid];
 }
 
 @end

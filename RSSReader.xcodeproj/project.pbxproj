@@ -29,6 +29,8 @@
 		CEBF09711E0D3C9300AC7468 /* RSSChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBF096F1E0D3C9300AC7468 /* RSSChannelTableViewCell.xib */; };
 		CED0F6A21E2CEC3E006F9C57 /* ImagePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0F6A11E2CEC3E006F9C57 /* ImagePool.m */; };
 		CED0F6A81E2CFDAC006F9C57 /* RSSChannelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CED0F6A71E2CFDAC006F9C57 /* RSSChannelSet.m */; };
+		CEDBDED91E377305000966AA /* RSSModelUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBDED81E377305000966AA /* RSSModelUtils.m */; };
+		CEDBDEDC1E378172000966AA /* UIViewController+showError.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDBDEDB1E378171000966AA /* UIViewController+showError.m */; };
 		CEEC5C771DF9653D00384C0A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEC5C761DF9653D00384C0A /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CEEC5C7D1DF97C7200384C0A /* RSSUrlSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */; };
 		CEEC5C7F1DF97E6C00384C0A /* RSSSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEC5C7E1DF97E6C00384C0A /* RSSSource.m */; };
@@ -79,6 +81,10 @@
 		CED0F6A61E2CFDAC006F9C57 /* RSSChannelSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannelSet.h; sourceTree = "<group>"; };
 		CED0F6A71E2CFDAC006F9C57 /* RSSChannelSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannelSet.m; sourceTree = "<group>"; };
 		CED0F6A91E2CFDE8006F9C57 /* RSSChannelSetDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSChannelSetDelegate.h; sourceTree = "<group>"; };
+		CEDBDED71E377305000966AA /* RSSModelUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSModelUtils.h; sourceTree = "<group>"; };
+		CEDBDED81E377305000966AA /* RSSModelUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSModelUtils.m; sourceTree = "<group>"; };
+		CEDBDEDA1E378171000966AA /* UIViewController+showError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+showError.h"; sourceTree = "<group>"; };
+		CEDBDEDB1E378171000966AA /* UIViewController+showError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+showError.m"; sourceTree = "<group>"; };
 		CEEC5C761DF9653D00384C0A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CEEC5C7B1DF97C7200384C0A /* RSSUrlSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSUrlSource.h; sourceTree = "<group>"; };
 		CEEC5C7C1DF97C7200384C0A /* RSSUrlSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSUrlSource.m; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 				CEA8AF901DD5E4D900A3D649 /* Supporting Files */,
 				CE2D392C1DFAF82800E89973 /* Model.xcdatamodeld */,
 				CEBF096B1E0D364100AC7468 /* ipad-pro-app-83.5pt@2x.png */,
+				CEDBDEDA1E378171000966AA /* UIViewController+showError.h */,
+				CEDBDEDB1E378171000966AA /* UIViewController+showError.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -164,6 +172,8 @@
 			children = (
 				CE2D391D1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.h */,
 				CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */,
+				CEDBDED71E377305000966AA /* RSSModelUtils.h */,
+				CEDBDED81E377305000966AA /* RSSModelUtils.m */,
 			);
 			name = db;
 			sourceTree = "<group>";
@@ -350,6 +360,8 @@
 				CE366E1F1DEC53340080B9CA /* main.m in Sources */,
 				CED0F6A81E2CFDAC006F9C57 /* RSSChannelSet.m in Sources */,
 				CE366E251DEC53A70080B9CA /* NSObject+NibLoader.m in Sources */,
+				CEDBDEDC1E378172000966AA /* UIViewController+showError.m in Sources */,
+				CEDBDED91E377305000966AA /* RSSModelUtils.m in Sources */,
 				CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

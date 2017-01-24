@@ -18,6 +18,16 @@
 
 @implementation RSSLoader
 
++ (instancetype)loaderWithURL:(NSURL*)url{
+	return [[RSSLoader alloc] initWithURL:url];
+}
+
+- (instancetype)initWithURL:(NSURL*)url{
+	self = [self init];
+	_url = url;
+	return self;
+}
+
 - (void)startLoading{
 	[self.delegate RSSLoader:self didStartLoading:_url];
 	_task = [[NSURLSession sharedSession] dataTaskWithURL:_url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -32,17 +42,6 @@
 		}
 	}];
 	[_task resume];
-}
-
-- (instancetype)initWithURL:(NSURL*)url{
-	self = [self init];
-	_url = url;
-	return self;
-}
-
-
-+ (instancetype)loaderWithURL:(NSURL*)url{
-	return [[RSSLoader alloc] initWithURL:url];
 }
 
 @end

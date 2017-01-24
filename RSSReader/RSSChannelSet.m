@@ -9,6 +9,7 @@
 #import "RSSChannelSet.h"
 #import "RSSCachedSource.h"
 #import "NSManagedObjectContext+contextWithSqlite.h"
+#import "RSSModelUtils.h"
 
 @interface RSSChannelSet() <RSSSourceDelegate>{
 	NSMutableDictionary<NSURL*, RSSSource*> *_sources;
@@ -25,7 +26,7 @@
 
 - (void)updateChannels{
 	_newSource = nil;
-		NSManagedObjectContext *context = [NSManagedObjectContext contextWithSharedContext];
+		NSManagedObjectContext *context = [NSManagedObjectContext createSecondaryContext];
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSChannelModel"];
 		NSError *dbError;
 		NSArray <RSSChannelModel*> *dbChannels = [context executeFetchRequest:fetchRequest
@@ -39,7 +40,7 @@
 			for(RSSNewsModel *dbNews in dbChannel.news){
 				if(!dbNews.read) count++;
 			}
-			RSSChannel *channel = [RSSChannel channelWithModel:dbChannel];
+			RSSChannel *channel = [RSSModelUtils channelWithModel:dbChannel];
 			[channels addObject:channel];
 			if([_sources objectForKey:channel.url]==nil){
 				RSSSource *src = [RSSCachedSource sourceWithURL:channel.url];
@@ -72,7 +73,8 @@
 	}
 	RSSSource *src = [RSSCachedSource sourceWithURL:url];
 	src.delegate = self;
-	[_sources setObject:src forKey:url];
+	if(url!=nil)
+		[_sources setObject:src forKey:url];
 	_newSource = src;
 	[self refresh];
 }
@@ -80,7 +82,7 @@
 - (void)removeChannel:(RSSChannel*) channel{
 	[_sources removeObjectForKey:channel.url];
 	dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-		NSManagedObjectContext *context = [NSManagedObjectContext contextWithSharedContext];
+		NSManagedObjectContext *context = [NSManagedObjectContext createSecondaryContext];
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSChannelModel"];
 		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"url like %@",[channel.url absoluteString]];
 		NSError *dbError;

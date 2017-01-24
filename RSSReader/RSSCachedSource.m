@@ -11,6 +11,7 @@
 #import "RSSDatabaseSource.h"
 #import "NSManagedObjectContext+contextWithSqlite.h"
 #import <CoreData/CoreData.h>
+#import "RSSModelUtils.h"
 
 @interface RSSCachedSource () <RSSSourceDelegate>{
 	RSSUrlSource * _urlSource;
@@ -21,6 +22,18 @@
 
 @implementation RSSCachedSource
 
++ (instancetype)sourceWithURL:(NSURL*)url{
+	return [[RSSCachedSource alloc] initWithURL:url];
+}
+
+- (instancetype)initWithURL:(NSURL*)url{
+	_urlSource = [RSSUrlSource sourceWithURL:url];
+	_urlSource.delegate = self;
+	_databaseSource = [RSSDatabaseSource sourceWithURL:url];
+	_databaseSource.delegate = self;
+	return self;
+}
+
 - (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
 	[self.delegate RSSSource:self
 		  didStartRefreshing:url];
@@ -28,7 +41,7 @@
 
 - (void)RSSSource:(RSSSource*)RSSSource didFinishRefreshing:(RSSChannel *)rssChannel{
 	if(RSSSource == _urlSource){
-		NSManagedObjectContext * context = [NSManagedObjectContext contextWithSharedContext];
+		NSManagedObjectContext * context = [NSManagedObjectContext createSecondaryContext];
 		NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"RSSChannelModel"];
 		fetchRequest.predicate = [NSPredicate predicateWithFormat:@"url like %@",[rssChannel.url absoluteString]];
 		NSError *dbError;
@@ -40,7 +53,7 @@
 		}
 		RSSChannelModel *dbChannel = [NSEntityDescription insertNewObjectForEntityForName:@"RSSChannelModel"
 																   inManagedObjectContext:context];
-		[rssChannel writeModel:dbChannel];
+		[RSSModelUtils writeChannelModel:dbChannel withChannel:rssChannel];
 		[context save:&dbError];
 		NSAssert(dbError==nil, @"Database save failed");
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -61,18 +74,6 @@
 
 - (void) refresh {
 	[_urlSource refresh];
-}
-
-- (instancetype)initWithURL:(NSURL*)url{
-	_urlSource = [RSSUrlSource sourceWithURL:url];
-	_urlSource.delegate = self;
-	_databaseSource = [RSSDatabaseSource sourceWithURL:url];
-	_databaseSource.delegate = self;
-	return self;
-}
-
-+ (instancetype)sourceWithURL:(NSURL*)url{
-	return [[RSSCachedSource alloc] initWithURL:url];
 }
 
 @end

@@ -20,7 +20,7 @@
 	return instance;
 }
 
-+(instancetype)contextWithSharedContext {
++(instancetype)createSecondaryContext {
 	NSManagedObjectContext * context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
 	[context setParentContext:NSManagedObjectContext.mainContext];
 	return context;

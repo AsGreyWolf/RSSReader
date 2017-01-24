@@ -12,14 +12,12 @@
 #import "RSSDetailViewController.h"
 #import "RSSChannelTableViewController.h"
 #import "RSSCachedSource.h"
+#import "UIViewController+showError.h"
 
 @interface RSSTableViewController () <RSSSourceDelegate>{
 	RSSSource *_rssSource;
 	int _clickedItem;
-	UIRefreshControl *_refreshControl;
 }
-
-- (void)showError:(NSError*)err;
 
 @end
 
@@ -44,9 +42,8 @@
 
 	_clickedItem = -1;
 
-	_refreshControl = [[UIRefreshControl alloc]init];
-	[self.tableView addSubview:_refreshControl];
-	[_refreshControl addTarget:_rssSource action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+	self.refreshControl = [UIRefreshControl new];
+	[self.refreshControl addTarget:_rssSource action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -65,17 +62,6 @@
 	[self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_clickedItem
 																inSection:0]]
 						  withRowAnimation:true];
-}
-
-- (void)showError:(NSError *)err{
-	UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Error", nil)
-																	message:NSLocalizedString(@"Can not load RSS", nil)
-															 preferredStyle:UIAlertControllerStyleAlert];
-	UIAlertAction *alertAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", nil)
-														  style:UIAlertActionStyleDestructive
-														handler:nil];
-	[alert addAction:alertAction];
-	[self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void) viewWillDisappear:(BOOL)animated{
@@ -118,7 +104,7 @@
 
 - (void)RSSSource:(RSSSource*)RSSSource didStartRefreshing:(NSURL *)url{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[_refreshControl beginRefreshing];
+		[self.refreshControl beginRefreshing];
 	});
 }
 
@@ -126,14 +112,14 @@
 	dispatch_async(dispatch_get_main_queue(), ^{
 		_channel = rssChannel;
 		self.title = _channel.name;
-		[_refreshControl endRefreshing];
+		[self.refreshControl endRefreshing];
 		[self.tableView reloadData];
 	});
 }
 
 - (void)RSSSource:(RSSSource*)RSSSource didFailWithError:(NSError *)err{
 	dispatch_async(dispatch_get_main_queue(), ^{
-		[_refreshControl endRefreshing];
+		[self.refreshControl endRefreshing];
 		[self showError:err];
 	});
 }

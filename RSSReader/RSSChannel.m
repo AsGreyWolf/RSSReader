@@ -22,6 +22,16 @@
 
 @implementation RSSChannel
 
++ (instancetype) channelWithName:(NSString*)name
+						 withUrl:(NSURL*)url
+					   withImage:(NSURL*)image
+					withNewsList:(NSArray<RSSNews *>*)newsList{
+	return [[RSSChannel alloc] initWithName:name
+									withUrl:url
+								  withImage:image
+							   withNewsList:newsList];
+}
+
 - (instancetype) initWithName:(NSString*)name
 					  withUrl:(NSURL*)url
 					withImage:(NSURL*)image
@@ -33,38 +43,6 @@
 	self.url = url;
 	self.image = image;
 	return self;
-}
-- (void) writeModel:(RSSChannelModel *)model{
-	model.name = self.name;
-	model.url = [self.url absoluteString];
-	model.image = [self.image absoluteString];
-	for(RSSNews *news in self.news){
-		RSSNewsModel *dbNews = [NSEntityDescription insertNewObjectForEntityForName:@"RSSNewsModel"
-															 inManagedObjectContext:model.managedObjectContext];
-		[news writeModel:dbNews
-			 withChannel:model];
-	}
-}
-
-+ (instancetype) channelWithModel:(RSSChannelModel *)model{
-	NSSet <RSSNewsModel*> *dbNewsList = model.news;
-	NSMutableArray<RSSNews*> *newsList = [NSMutableArray new];
-	for(RSSNewsModel * dbNews in dbNewsList)
-		[newsList addObject:[RSSNews newsWithModel:dbNews]];
-	RSSChannel * result = [RSSChannel channelWithName:model.name
-											  withUrl:[NSURL URLWithString:model.url]
-											withImage:[NSURL URLWithString:model.image]
-										 withNewsList:newsList];
-	return result;
-}
-+ (instancetype) channelWithName:(NSString*)name
-						 withUrl:(NSURL*)url
-					   withImage:(NSURL*)image
-					withNewsList:(NSArray<RSSNews *>*)newsList{
-	return [[RSSChannel alloc] initWithName:name
-									withUrl:url
-								  withImage:image
-							   withNewsList:newsList];
 }
 
 @end

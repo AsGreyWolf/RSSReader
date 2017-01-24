@@ -10,8 +10,8 @@
 
 @interface RSSDatabaseSource : RSSSource
 
-- (instancetype)initWithURL:(NSURL*)url;
-
 + (instancetype)sourceWithURL:(NSURL*)url;
+
+- (instancetype)initWithURL:(NSURL*)url;
 
 @end

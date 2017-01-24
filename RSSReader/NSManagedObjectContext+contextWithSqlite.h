@@ -12,6 +12,6 @@
 
 +(instancetype)mainContext;
 +(instancetype)contextWithSqlite:(NSString*)name;
-+(instancetype)contextWithSharedContext;
++(instancetype)createSecondaryContext;
 
 @end

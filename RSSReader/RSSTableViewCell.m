@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *date;
+@property (weak, nonatomic) IBOutlet UILabel *status;
 
 @end
 
@@ -28,16 +29,7 @@
 	else
 		self.date.text = @"";
 	[self.date sizeToFit];
-	if(data.read){
-		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-	}
-	else{
-		self.accessoryType = UITableViewCellAccessoryDetailButton;
-	}
-}
-
-- (void)awakeFromNib {
-	[super awakeFromNib];
+	self.status.hidden = data.read;
 }
 
 @end
