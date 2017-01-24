@@ -20,10 +20,7 @@
 -(void)setChannel:(RSSChannel *)channel{
 	_channel = channel;
 	self.title.text = channel.name;
-	int unread = 0;
-	for(RSSNews *news in channel.news){
-		if(!news.read) unread++;
-	}
+	int unread = channel.unreadCount;
 	self.counter.hidden = unread == 0;
 	self.counter.text = [NSString stringWithFormat:@"%d", unread];
 	if(channel.image != nil){

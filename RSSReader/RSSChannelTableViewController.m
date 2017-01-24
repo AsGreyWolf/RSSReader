@@ -115,10 +115,14 @@
 	});
 
 }
+- (void)RSSChannelSet:(RSSChannelSet*)RSSChannelSet didPreloaded:(NSArray<RSSChannel*> *)rssChannel{
+	[self RSSChannelSet:RSSChannelSet didFinishRefreshing:rssChannel];
+}
 - (void)RSSChannelSet:(RSSChannelSet*)RSSChannelSet didFinishRefreshing:(NSArray<RSSChannel*> *)rssChannel{
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self.refreshControl endRefreshing];
 		[self.tableView reloadData];
+		UIApplication.sharedApplication.applicationIconBadgeNumber=RSSChannelSet.unreadCount;
 	});
 }
 - (void)RSSChannelSet:(RSSChannelSet*)RSSChannelSet didFailWithError:(NSError *)err{

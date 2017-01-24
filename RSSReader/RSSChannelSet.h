@@ -13,6 +13,7 @@
 
 @property (nonatomic, weak) id <RSSChannelSetDelegate> delegate;
 @property (nonatomic,readonly) NSArray<RSSChannel*> *channels;
+@property (nonatomic,readonly) int unreadCount;
 
 - (void)refresh;
 - (void)addURL:(NSURL*) url;

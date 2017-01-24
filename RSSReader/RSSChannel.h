@@ -20,5 +20,6 @@
 @property (readonly, nonatomic) NSURL * url;
 @property (readonly, nonatomic) NSURL * image;
 @property (readonly, nonatomic) NSArray<RSSNews *> * news;
+@property (readonly, nonatomic) int unreadCount;
 
 @end

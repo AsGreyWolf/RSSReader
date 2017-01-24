@@ -45,4 +45,11 @@
 	return self;
 }
 
+- (int)unreadCount{
+	int result=0;
+	for(RSSNews *item in self.news)
+		if(!item.read) result++;
+	return result;
+}
+
 @end

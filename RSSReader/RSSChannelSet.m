@@ -24,6 +24,13 @@
 
 @implementation RSSChannelSet
 
+- (int)unreadCount{
+	int result = 0;
+	for(RSSChannel* channel in self.channels)
+		result+=channel.unreadCount;
+	return result;
+}
+
 - (void)updateChannels{
 	_newSource = nil;
 		NSManagedObjectContext *context = [NSManagedObjectContext createSecondaryContext];
@@ -33,14 +40,19 @@
 																		error:&dbError];
 		NSAssert(dbError==nil, @"Database selection failed");
 		dbChannels = [dbChannels sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"name"
+																							 ascending:true],
+															   [NSSortDescriptor sortDescriptorWithKey:@"url"
 																							 ascending:true]]];
 		NSMutableArray <RSSChannel*> *channels = [NSMutableArray new];
+		NSURL *prevURL = nil;
 		for(RSSChannelModel *dbChannel in dbChannels){
 			int count = 0;
 			for(RSSNewsModel *dbNews in dbChannel.news){
 				if(!dbNews.read) count++;
 			}
 			RSSChannel *channel = [RSSModelUtils channelWithModel:dbChannel];
+			if([channel.url isEqual:prevURL]) continue;
+			prevURL = channel.url;
 			[channels addObject:channel];
 			if([_sources objectForKey:channel.url]==nil){
 				RSSSource *src = [RSSCachedSource sourceWithURL:channel.url];
@@ -49,11 +61,11 @@
 			}
 		}
 		self.channels = channels;
-		[self.delegate RSSChannelSet:self didFinishRefreshing:self.channels];
 }
 
 - (void)refresh{
 	[self updateChannels];
+	[self.delegate RSSChannelSet:self didPreloaded:self.channels];
 	[self.delegate RSSChannelSet:self didStartRefreshing:self.channels];
 	[_sources enumerateKeysAndObjectsUsingBlock:^(id key, id object, BOOL *stop) {
 		[_processing addObject:object];
@@ -61,6 +73,7 @@
 	}];
 	if(_processing.count == 0){
 		[self updateChannels];
+		[self.delegate RSSChannelSet:self didFinishRefreshing:self.channels];
 	}
 }
 
@@ -120,6 +133,7 @@
 						didFailWithError:err];
 		if(_processing.count == 0){
 			[self updateChannels];
+			[self.delegate RSSChannelSet:self didFinishRefreshing:self.channels];
 		}
 	});
 }
@@ -133,6 +147,7 @@
 			[_processing removeObject:RSSSource];
 		if(_processing.count == 0){
 			[self updateChannels];
+			[self.delegate RSSChannelSet:self didFinishRefreshing:self.channels];
 		}
 	});
 }
