@@ -15,7 +15,7 @@
 																	message:NSLocalizedString(@"Can not load RSS", nil)
 															 preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Dismiss", nil)
-											  style:UIAlertActionStyleDestructive
+											  style:UIAlertActionStyleCancel
 											handler:nil]];
 	[self presentViewController:alert animated:true completion:nil];
 }
