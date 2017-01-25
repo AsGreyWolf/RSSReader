@@ -24,6 +24,7 @@
 		CEA8AF9D1DD5E4D900A3D649 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA8AF9C1DD5E4D900A3D649 /* Assets.xcassets */; };
 		CEA8AFA01DD5E4D900A3D649 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */; };
 		CEA8AFA91DD5E6FF00A3D649 /* RSSTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */; };
+		CEB2998D1E38C399005C90BA /* BackgroundRefresher.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB2998C1E38C399005C90BA /* BackgroundRefresher.m */; };
 		CEBF096C1E0D364100AC7468 /* ipad-pro-app-83.5pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEBF096B1E0D364100AC7468 /* ipad-pro-app-83.5pt@2x.png */; };
 		CEBF09701E0D3C9300AC7468 /* RSSChannelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEBF096E1E0D3C9300AC7468 /* RSSChannelTableViewCell.m */; };
 		CEBF09711E0D3C9300AC7468 /* RSSChannelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBF096F1E0D3C9300AC7468 /* RSSChannelTableViewCell.xib */; };
@@ -72,6 +73,8 @@
 		CEA8AFA11DD5E4D900A3D649 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEA8AFA71DD5E6FF00A3D649 /* RSSTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSTableViewController.h; sourceTree = "<group>"; };
 		CEA8AFA81DD5E6FF00A3D649 /* RSSTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSTableViewController.m; sourceTree = "<group>"; };
+		CEB2998B1E38C399005C90BA /* BackgroundRefresher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundRefresher.h; sourceTree = "<group>"; };
+		CEB2998C1E38C399005C90BA /* BackgroundRefresher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundRefresher.m; sourceTree = "<group>"; };
 		CEBF096B1E0D364100AC7468 /* ipad-pro-app-83.5pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ipad-pro-app-83.5pt@2x.png"; sourceTree = "<group>"; };
 		CEBF096D1E0D3C9300AC7468 /* RSSChannelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannelTableViewCell.h; sourceTree = "<group>"; };
 		CEBF096E1E0D3C9300AC7468 /* RSSChannelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannelTableViewCell.m; sourceTree = "<group>"; };
@@ -148,13 +151,15 @@
 				CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */,
 				CEA8AF931DD5E4D900A3D649 /* AppDelegate.h */,
 				CEA8AF941DD5E4D900A3D649 /* AppDelegate.m */,
+				CEDBDEDA1E378171000966AA /* UIViewController+showError.h */,
+				CEDBDEDB1E378171000966AA /* UIViewController+showError.m */,
+				CEB2998B1E38C399005C90BA /* BackgroundRefresher.h */,
+				CEB2998C1E38C399005C90BA /* BackgroundRefresher.m */,
 				CEA8AF9C1DD5E4D900A3D649 /* Assets.xcassets */,
 				CEA8AFA11DD5E4D900A3D649 /* Info.plist */,
 				CEA8AF901DD5E4D900A3D649 /* Supporting Files */,
 				CE2D392C1DFAF82800E89973 /* Model.xcdatamodeld */,
 				CEBF096B1E0D364100AC7468 /* ipad-pro-app-83.5pt@2x.png */,
-				CEDBDEDA1E378171000966AA /* UIViewController+showError.h */,
-				CEDBDEDB1E378171000966AA /* UIViewController+showError.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -367,6 +372,7 @@
 				CE366E251DEC53A70080B9CA /* NSObject+NibLoader.m in Sources */,
 				CEDBDEDC1E378172000966AA /* UIViewController+showError.m in Sources */,
 				CEDBDED91E377305000966AA /* RSSModelUtils.m in Sources */,
+				CEB2998D1E38C399005C90BA /* BackgroundRefresher.m in Sources */,
 				CEF8EDCD1DE4784600D8ED39 /* RSSLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
