@@ -11,6 +11,7 @@
 @implementation ImagePool
 
 + (UIImage*)imageWithUrl:(NSURL*)url{
+	if(url==nil) return [UIImage imageNamed: @"ipad-pro-app-83.5pt@2x.png"];
 	static NSCache *imagesCache;
 	static dispatch_once_t onceToken;
 	dispatch_once(&onceToken, ^{

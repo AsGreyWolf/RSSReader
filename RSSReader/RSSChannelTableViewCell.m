@@ -23,9 +23,7 @@
 	int unread = channel.unreadCount;
 	self.counter.hidden = unread == 0;
 	self.counter.text = [NSString stringWithFormat:@"%d", unread];
-	if(channel.image != nil){
-		self.image.image = [ImagePool imageWithUrl:channel.image];
-	}
+	self.image.image = [ImagePool imageWithUrl:channel.image];
 }
 
 @end
