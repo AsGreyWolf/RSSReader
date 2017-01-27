@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DialogViewController">
+            <connections>
+                <outlet property="container" destination="aUF-Oa-yQu" id="FZv-0c-07T"/>
+                <outlet property="text" destination="LWf-x1-zr5" id="35g-VD-Wkb"/>
+                <outlet property="titleLabel" destination="uwM-6z-cNt" id="gTZ-CF-ptu"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Ko6-UN-L5G"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view alpha="0.5" contentMode="scaleAspectFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUF-Oa-yQu">
+                    <rect key="frame" x="8" y="299" width="359" height="70"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vvB-OO-4l4">
+                            <rect key="frame" x="8" y="8" width="343" height="54"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwM-6z-cNt">
+                                    <rect key="frame" x="0.0" y="0.0" width="343" height="33.5"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-x1-zr5">
+                                    <rect key="frame" x="0.0" y="33.5" width="343" height="20.5"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="vvB-OO-4l4" firstAttribute="leading" secondItem="aUF-Oa-yQu" secondAttribute="leadingMargin" id="7sc-bA-CRC"/>
+                        <constraint firstAttribute="bottomMargin" secondItem="vvB-OO-4l4" secondAttribute="bottom" id="BLX-hf-RHi"/>
+                        <constraint firstItem="vvB-OO-4l4" firstAttribute="top" secondItem="aUF-Oa-yQu" secondAttribute="topMargin" id="FhM-wU-cT7"/>
+                        <constraint firstAttribute="trailingMargin" secondItem="vvB-OO-4l4" secondAttribute="trailing" id="erk-9R-5jS"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="aUF-Oa-yQu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="Gmd-47-EVJ"/>
+                <constraint firstItem="aUF-Oa-yQu" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JBi-0j-3Qt"/>
+                <constraint firstItem="aUF-Oa-yQu" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gDu-MO-rzN"/>
+                <constraint firstItem="aUF-Oa-yQu" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="xOJ-W2-pWf"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="32.5" y="60.5"/>
+        </view>
+    </objects>
+</document>

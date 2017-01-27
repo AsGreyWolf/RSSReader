@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE0B23E61DFFAD8700DC9F88 /* RSSDatabaseSource.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0B23E51DFFAD8700DC9F88 /* RSSDatabaseSource.m */; };
+		CE1069781E3B685F00339857 /* Dialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE1069771E3B685F00339857 /* Dialog.xib */; };
+		CE10697B1E3B690700339857 /* DialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE10697A1E3B690700339857 /* DialogViewController.m */; };
 		CE2036A41DEDA8760018E9AF /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2036A31DEDA8760018E9AF /* RSSChannel.m */; };
 		CE2D391F1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2D391E1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.m */; };
 		CE2D392E1DFAF82800E89973 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CE2D392C1DFAF82800E89973 /* Model.xcdatamodeld */; };
@@ -43,6 +45,9 @@
 /* Begin PBXFileReference section */
 		CE0B23E41DFFAD8700DC9F88 /* RSSDatabaseSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSDatabaseSource.h; sourceTree = "<group>"; };
 		CE0B23E51DFFAD8700DC9F88 /* RSSDatabaseSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSDatabaseSource.m; sourceTree = "<group>"; };
+		CE1069771E3B685F00339857 /* Dialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Dialog.xib; sourceTree = "<group>"; };
+		CE1069791E3B690700339857 /* DialogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DialogViewController.h; sourceTree = "<group>"; };
+		CE10697A1E3B690700339857 /* DialogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DialogViewController.m; sourceTree = "<group>"; };
 		CE2036A21DEDA8760018E9AF /* RSSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannel.h; sourceTree = "<group>"; };
 		CE2036A31DEDA8760018E9AF /* RSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannel.m; sourceTree = "<group>"; };
 		CE2D391D1DFADCF600E89973 /* NSManagedObjectContext+contextWithSqlite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+contextWithSqlite.h"; sourceTree = "<group>"; };
@@ -112,6 +117,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE1069761E3B679700339857 /* dialog */ = {
+			isa = PBXGroup;
+			children = (
+				CEDBDEDA1E378171000966AA /* UIViewController+showError.h */,
+				CEDBDEDB1E378171000966AA /* UIViewController+showError.m */,
+				CE1069771E3B685F00339857 /* Dialog.xib */,
+				CE1069791E3B690700339857 /* DialogViewController.h */,
+				CE10697A1E3B690700339857 /* DialogViewController.m */,
+			);
+			name = dialog;
+			sourceTree = "<group>";
+		};
 		CE366E201DEC534E0080B9CA /* TestTasks */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +160,7 @@
 		CEA8AF8F1DD5E4D900A3D649 /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
+				CE1069761E3B679700339857 /* dialog */,
 				CEE635D91DFEF8F200E30F5A /* news */,
 				CEE635D71DFEF8AA00E30F5A /* channel */,
 				CEE635DB1DFEF9B600E30F5A /* channelList */,
@@ -151,8 +169,6 @@
 				CEA8AF9E1DD5E4D900A3D649 /* LaunchScreen.storyboard */,
 				CEA8AF931DD5E4D900A3D649 /* AppDelegate.h */,
 				CEA8AF941DD5E4D900A3D649 /* AppDelegate.m */,
-				CEDBDEDA1E378171000966AA /* UIViewController+showError.h */,
-				CEDBDEDB1E378171000966AA /* UIViewController+showError.m */,
 				CEB2998B1E38C399005C90BA /* BackgroundRefresher.h */,
 				CEB2998C1E38C399005C90BA /* BackgroundRefresher.m */,
 				CEA8AF9C1DD5E4D900A3D649 /* Assets.xcassets */,
@@ -337,6 +353,7 @@
 				CE97627C1DE311220086196D /* RSSTableViewCell.xib in Resources */,
 				CEBF096C1E0D364100AC7468 /* ipad-pro-app-83.5pt@2x.png in Resources */,
 				CEBF09711E0D3C9300AC7468 /* RSSChannelTableViewCell.xib in Resources */,
+				CE1069781E3B685F00339857 /* Dialog.xib in Resources */,
 				CEA8AFA01DD5E4D900A3D649 /* LaunchScreen.storyboard in Resources */,
 				CEA8AF9D1DD5E4D900A3D649 /* Assets.xcassets in Resources */,
 				CEA8AF9B1DD5E4D900A3D649 /* Main.storyboard in Resources */,
@@ -351,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEA4BD801DFFB92000DA793F /* RSSChannelTableViewController.m in Sources */,
+				CE10697B1E3B690700339857 /* DialogViewController.m in Sources */,
 				CE2036A41DEDA8760018E9AF /* RSSChannel.m in Sources */,
 				CEBF09701E0D3C9300AC7468 /* RSSChannelTableViewCell.m in Sources */,
 				CEEC5C7D1DF97C7200384C0A /* RSSUrlSource.m in Sources */,
