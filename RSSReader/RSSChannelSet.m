@@ -83,13 +83,13 @@
 					didFailWithError:[NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier]
 														 code:43
 													 userInfo:nil]];
+		return;
 	}
 	RSSSource *src = [RSSCachedSource sourceWithURL:url];
 	src.delegate = self;
-	if(url!=nil)
-		[_sources setObject:src forKey:url];
-	_newSource = src;
+	[_sources setObject:src forKey:url];
 	[self refresh];
+	_newSource = src;
 }
 
 - (void)removeChannel:(RSSChannel*) channel{
